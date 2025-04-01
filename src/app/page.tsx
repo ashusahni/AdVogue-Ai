@@ -6,9 +6,7 @@ import { ServicesSection } from "@/components/ui/services-section";
 import { PricingSection } from "@/components/ui/pricing-section";
 import { FAQSection } from "@/components/ui/faq-section";
 import { Footer } from "@/components/ui/footer";
-import Script from 'next/script';
-import { CalendlySection } from "@/components/ui/calendly-section";
-
+import { BookingCalendar } from "@/components/ui/booking-calendar";
 
 const navigationItems = [
   { name: "Home", link: "/" },
@@ -70,34 +68,15 @@ const faqItems = [
   },
 ];
 
-const CalendlyWidget: React.FC = () => {
-  return (
-    <>
-      <div 
-        className="calendly-inline-widget" 
-        data-url="https://calendly.com/techy833" 
-        style={{ minWidth: '320px', height: '700px' }}
-      />
-      <Script
-        src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="afterInteractive"
-        async
-      />
-    </>
-  );
-};
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-black">
       <FloatingNavbar items={navigationItems} />
       <HeroSection />
       <ServicesSection />
-      <CalendlySection />
+      <BookingCalendar />
       <PricingSection plans={pricingPlans} />
-      
       <FAQSection items={faqItems} />
-
       <Footer />
     </main>
   );
