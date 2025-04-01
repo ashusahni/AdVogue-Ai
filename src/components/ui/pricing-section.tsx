@@ -83,7 +83,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
           <Button
             className="px-6 py-3 bg-teal-500 hover:bg-teal-600 text-white rounded-md"
             onClick={() =>
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+              document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })
             }
           >
             Book Your AI Voice Agent Discovery Call Today

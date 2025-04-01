@@ -72,7 +72,7 @@ export function HeroSection() {
         >
           <Button
             className="px-8 py-6 text-base font-medium rounded-md bg-teal-500 hover:bg-teal-600 text-white"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Book A Call
           </Button>

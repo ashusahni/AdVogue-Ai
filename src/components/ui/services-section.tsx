@@ -6,28 +6,25 @@ import { BackgroundGradient } from "./background-gradient";
 import { HoverEffect } from "./card-hover-effect";
 import { PhoneIcon, ChartBarIcon } from "@heroicons/react/24/outline";
 import { Button } from "./button";
-import { BookingDialog } from "./booking-dialog";
+import { cn } from "@/lib/utils";
 
 const services = [
   {
     title: "Inbound Calls",
     description: "Handle customer inquiries, support tickets, and general assistance with our advanced AI voice agents.",
     icon: PhoneIcon,
-    link: "#",
     className: "bg-gradient-to-br from-teal-500 to-emerald-500",
   },
   {
     title: "Outbound Calls",
     description: "Proactive customer engagement, appointment scheduling, and follow-ups with natural conversation flow.",
     icon: PhoneIcon,
-    link: "#",
     className: "bg-gradient-to-br from-purple-500 to-indigo-500",
   },
   {
     title: "Analytics & Insights",
     description: "Comprehensive reporting and analytics to track performance, customer satisfaction, and key metrics.",
     icon: ChartBarIcon,
-    link: "#",
     className: "bg-gradient-to-br from-pink-500 to-rose-500",
   },
 ];
@@ -51,11 +48,13 @@ const features = [
   },
 ];
 
-export const ServicesSection: React.FC = () => {
-  const [isBookingOpen, setIsBookingOpen] = React.useState(false);
+export function ServicesSection() {
+  const scrollToBooking = () => {
+    document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <section className="relative w-full py-20 overflow-hidden bg-zinc-950">
+    <section id="services" className="relative w-full py-20 overflow-hidden bg-zinc-950">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -72,7 +71,7 @@ export const ServicesSection: React.FC = () => {
             Seamless, efficient, and available 24/7.
           </p>
           <Button
-            onClick={() => setIsBookingOpen(true)}
+            onClick={scrollToBooking}
             className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-full"
           >
             Book a Demo
@@ -87,14 +86,14 @@ export const ServicesSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <BackgroundGradient className="p-8 h-full">
+              <BackgroundGradient className={cn("p-8 h-full rounded-2xl", service.className)}>
                 <service.icon className="w-10 h-10 text-white mb-6" />
                 <h3 className="text-2xl font-semibold text-white mb-4">
                   {service.title}
                 </h3>
-                <p className="text-zinc-400 mb-6">{service.description}</p>
+                <p className="text-zinc-200 mb-6">{service.description}</p>
                 <Button
-                  onClick={() => setIsBookingOpen(true)}
+                  onClick={scrollToBooking}
                   className="w-full bg-white/10 hover:bg-white/20 text-white transition-colors"
                 >
                   Learn More
@@ -105,11 +104,35 @@ export const ServicesSection: React.FC = () => {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <HoverEffect items={features} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800"
+              >
+                <h4 className="text-xl font-semibold text-white mb-2">{feature.title}</h4>
+                <p className="text-zinc-400">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="text-center mt-12"
+          >
+            <Button
+              onClick={scrollToBooking}
+              className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-full"
+            >
+              Get Started Today
+            </Button>
+          </motion.div>
         </div>
       </motion.div>
-
-      <BookingDialog isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </section>
   );
-}; 
+} 

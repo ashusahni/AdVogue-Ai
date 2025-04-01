@@ -6,14 +6,15 @@ import { ServicesSection } from "@/components/ui/services-section";
 import { PricingSection } from "@/components/ui/pricing-section";
 import { FAQSection } from "@/components/ui/faq-section";
 import { Footer } from "@/components/ui/footer";
-import { BookingCalendar } from "@/components/ui/booking-calendar";
+import { CalendlyWidget } from "@/components/ui/calendly-widget";
+import { ContactForm } from "@/components/ui/contact-form";
 
 const navigationItems = [
   { name: "Home", link: "/" },
   { name: "Services", link: "#services" },
   { name: "Pricing", link: "#pricing" },
   { name: "FAQ", link: "#faq" },
-  { name: "Book a Call", link: "#contact", isButton: true },
+  { name: "Book a Call", link: "#booking", isButton: true },
 ];
 
 const pricingPlans = [
@@ -74,9 +75,10 @@ export default function Home() {
       <FloatingNavbar items={navigationItems} />
       <HeroSection />
       <ServicesSection />
-      <BookingCalendar />
+      <CalendlyWidget />
       <PricingSection plans={pricingPlans} />
       <FAQSection items={faqItems} />
+      <ContactForm />
       <Footer />
     </main>
   );
