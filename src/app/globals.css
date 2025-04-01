@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 9%;
+    --foreground: 240 5% 96%;
+
+    --card: 240 10% 12%;
+    --card-foreground: 240 5% 96%;
+
+    --popover: 0 0% 9%;
+    --popover-foreground: 240 5% 96%;
+
+    --primary: 174 80% 43%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4% 23%;
+    --secondary-foreground: 240 5% 96%;
+
+    --muted: 240 4% 23%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 174 80% 43%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 240 5% 96%;
+
+    --border: 240 4% 23%;
+    --input: 240 4% 23%;
+    --ring: 174 80% 43%;
+
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-black text-foreground antialiased;
+  }
+
+  html {
+    @apply bg-black;
+  }
+}
+
+@layer utilities {
+  .animated-gradient {
+    background-size: 200%;
+    background-image: linear-gradient(
+      90deg,
+      theme('colors.teal.500'),
+      theme('colors.blue.600'),
+      theme('colors.teal.500')
+    );
+    animation: shimmer 2s linear infinite;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(45, 212, 191, 0.5), 0 0 20px rgba(45, 212, 191, 0.3);
+  }
+}
+
+.glow {
+  box-shadow: 0 0 20px 5px rgba(45, 212, 191, 0.3);
+}
+
+.gradient-heading {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-blue-600;
+}
+
+.noise-bg {
+  position: relative;
+}
+.noise-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  opacity: 0.4;
+  z-index: -1;
+}
