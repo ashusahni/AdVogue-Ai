@@ -200,7 +200,7 @@ export default function InboundPage() {
         className="bg-slate-50"
       />
       <ServicePageLayout
-        features={features}
+        // features={features}
         benefits={benefits}
         className="bg-black hover:bg-black/90"
       />
