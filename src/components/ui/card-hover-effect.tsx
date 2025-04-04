@@ -25,15 +25,15 @@ export const HoverEffect = ({
     >
       {items.map((item, idx) => (
         <div
-          key={item.title}
-          className="relative group block p-2"
+          key={item.title + idx}
+          className="relative group block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-zinc-800/[0.8] block rounded-3xl"
+                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -47,10 +47,18 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
-          </Card>
+          <div className="rounded-2xl h-full w-full p-4 overflow-hidden bg-zinc-900/50 border border-zinc-800 relative z-20 group-hover:border-zinc-600 transition-colors">
+            <div className="relative z-50">
+              <div className="p-4">
+                <h4 className="text-zinc-100 font-bold tracking-wide mt-4 text-xl">
+                  {item.title}
+                </h4>
+                <p className="mt-4 text-zinc-400 tracking-wide leading-relaxed text-sm">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       ))}
     </div>

@@ -1,87 +1,99 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
-interface NavItem {
-  name: string;
-  link: string;
-  isButton?: boolean;
-}
-
-interface FloatingNavbarProps {
-  items: NavItem[];
-}
-
-export function FloatingNavbar({ items }: FloatingNavbarProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+export const FloatingNavbar = ({
+  items,
+  className,
+}: {
+  items: {
+    name: string;
+    link: string;
+    isButton?: boolean;
+  }[];
+  className?: string;
+}) => {
+  const handleClick = (e: React.MouseEvent, link: string) => {
+    e.preventDefault();
+    const targetId = link.split('#')[1];
+    if (targetId) {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.location.href = link;
+    }
+  };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 100,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.3,
+      }}
       className={cn(
-        "fixed top-4 inset-x-4 z-50 transition-all duration-300",
-        "max-w-2xl mx-auto rounded-full border border-zinc-800",
-        isScrolled
-          ? "bg-black/80 backdrop-blur-sm shadow-lg"
-          : "bg-transparent"
+        "fixed bottom-8 inset-x-0 mx-auto w-[50vw] z-[5000]",
+        className
       )}
     >
-      <div className="container flex items-center justify-between p-4">
-        <Link href="/" className="flex items-center space-x-2">
-          <span className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-blue-600">
-            SLICK.AI
-          </span>
-        </Link>
-
-        <ul className="hidden md:flex items-center space-x-6">
-          {items.map((item) => (
-            <li key={item.name}>
-              <Link
-                href={item.link}
-                className={cn(
-                  "text-sm transition-colors",
-                  item.isButton
-                    ? "px-4 py-2 rounded-full bg-teal-500 hover:bg-teal-600 text-white"
-                    : "text-zinc-400 hover:text-white"
-                )}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <button className="md:hidden text-zinc-400 hover:text-white">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+      <motion.nav 
+        className="flex items-center justify-around bg-white rounded-full px-12 py-5"
+        initial={{ boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}
+        whileHover={{ 
+          boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+          y: -2,
+        }}
+        transition={{
+          duration: 0.2,
+        }}
+      >
+        {items.map((item, idx) => (
+          <motion.div
+            key={item.link}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </button>
-      </div>
-    </motion.nav>
+            <a
+              href={item.link}
+              onClick={(e) => handleClick(e, item.link)}
+              className={cn(
+                "text-base font-medium relative text-gray-500 hover:text-black transition-colors cursor-pointer",
+                {
+                  "flex items-center gap-2": item.isButton,
+                }
+              )}
+            >
+              {item.name}
+              {item.isButton && (
+                <motion.div 
+                  className="w-2.5 h-2.5 rounded-full bg-[#4ade80]"
+                  initial={{ scale: 1 }}
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [1, 0.8, 1]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              )}
+            </a>
+          </motion.div>
+        ))}
+      </motion.nav>
+    </motion.div>
   );
-}
+};

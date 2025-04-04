@@ -17,14 +17,14 @@ export function CalendlyWidget() {
   }, []);
 
   return (
-    <div id="booking" className="w-full bg-zinc-950 py-16">
+    <div id="booking" className="w-full bg-white py-16">
       <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-white text-center mb-8">
+        <h2 className="text-4xl font-bold text-black text-center mb-8">
           Schedule a Demo
         </h2>
         <div 
-          className="calendly-inline-widget rounded-2xl overflow-hidden shadow-2xl bg-zinc-900"
-          data-url="https://calendly.com/ananay-advogueai?hide_gdpr_banner=1&background_color=09090b&text_color=ffffff&primary_color=14b8a6"
+          className="calendly-inline-widget rounded-card overflow-hidden shadow-2xl bg-white"
+          data-url="https://calendly.com/ananay-advogueai?hide_gdpr_banner=1&background_color=ffffff&text_color=000000&primary_color=000000"
           style={{ 
             minWidth: "320px", 
             height: "650px",

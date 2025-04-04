@@ -1,22 +1,31 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+"use client";
+
+import { FloatingNavbar } from "@/components/ui/floating-navbar";
+import { Footer } from "@/components/ui/footer";
+import { CalendlyWidget } from "@/components/ui/calendly-widget";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "SLICK.AI | Advanced AI Solutions",
-  description: "Cutting-edge AI solutions for modern businesses",
-};
+const navigationItems = [
+  { name: "Home", link: "/" },
+  { name: "Services", link: "/#services" },
+  { name: "Contact Us", link: "/#contact", isButton: true },
+];
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} min-h-screen noise-bg`}>{children}</body>
+    <html lang="en">
+      <body className="bg-background">
+        <main className="flex min-h-screen flex-col items-center justify-between pt-8">
+          {children}
+          <CalendlyWidget />
+          <FloatingNavbar items={navigationItems} />
+          <Footer />
+        </main>
+      </body>
     </html>
   );
 }
