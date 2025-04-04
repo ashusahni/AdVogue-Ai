@@ -100,7 +100,6 @@ export default function Home() {
       <ComparisonSection />
       <ServicesSection />
       <FAQSection items={faqItems} />
-      <CalendlyWidget />
       <ContactForm />
     </>
   );
