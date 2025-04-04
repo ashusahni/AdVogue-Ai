@@ -2,10 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Button } from "./button";
-import { Spotlight } from "./spotlight";
 import React from "react";
 import Link from "next/link";
-import { CogIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import { PhoneIcon } from "@heroicons/react/24/outline";
 
 export function HeroSection() {
   return (
@@ -18,7 +17,7 @@ export function HeroSection() {
           className="mb-10"
         >
           <div className="mx-auto mb-6">
-            <Link href="/" className="hover:opacity-80 transition-all duration-300 hover:scale-105 inline-block">
+            <Link href="/" className="inline-block">
               <h1 className="text-2xl md:text-3xl font-black tracking-tighter inline-flex items-baseline justify-center w-full">
                 <span className="text-black">advogue</span>
                 <span className="text-black font-bold">.</span>
@@ -61,16 +60,14 @@ export function HeroSection() {
           className="mt-12"
         >
           <button
-              onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-8 py-4 text-lg font-medium rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white inline-flex items-center gap-3 shadow-lg shadow-indigo-500/20"
-            >
-              <PhoneIcon className="w-5 h-5" />
-              Book a call
-            </button>
+            onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-8 py-4 text-lg font-medium rounded-full bg-black text-white inline-flex items-center gap-3 shadow-lg shadow-indigo-500/20"
+          >
+            <PhoneIcon className="w-5 h-5" />
+            Book a call
+          </button>
         </motion.div>
       </div>
-
-      <Spotlight className="hidden md:block opacity-50" />
     </section>
   );
 }

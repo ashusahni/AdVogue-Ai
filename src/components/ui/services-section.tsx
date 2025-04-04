@@ -80,7 +80,7 @@ export function ServicesSection() {
             Seamless, efficient, and available 24/7.
           </p>
           <Button
-            onClick={scrollToBooking}
+            onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
             className="bg-black hover:bg-black/90 text-white px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base rounded-full shadow-lg shadow-black/20"
           >
             Book a Demo
@@ -178,7 +178,7 @@ export function ServicesSection() {
             className="text-center mt-12"
           >
             <Button
-              onClick={scrollToBooking}
+              onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
               className="bg-black hover:bg-black/90 text-white px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base rounded-full shadow-lg shadow-black/20"
             >
               Get Started Today
