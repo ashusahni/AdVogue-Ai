@@ -146,8 +146,8 @@ export function ServicePageLayout({
                   onClick={scrollToBooking}
                   className={cn(
                     "px-8 py-4 rounded-full text-white text-lg font-medium",
-                    "bg-gradient-to-r from-teal-500 to-emerald-500 hover:opacity-90 transition-opacity",
-                    "shadow-lg shadow-teal-500/20"
+                    "bg-black hover:bg-black/90 transition-opacity",
+                    "shadow-lg shadow-black/20"
                   )}
                 >
                   Book A Call
@@ -291,8 +291,8 @@ export function ServicePageLayout({
               onClick={scrollToBooking}
               className={cn(
                 "px-6 py-3 rounded-full text-white text-base font-medium",
-                "bg-gradient-to-r from-teal-500 to-emerald-500 hover:opacity-90 transition-opacity",
-                "shadow-lg shadow-teal-500/20"
+                "bg-black hover:bg-black/90 transition-opacity",
+                "shadow-lg shadow-black/20"
               )}
             >
               Book Your Demo Now

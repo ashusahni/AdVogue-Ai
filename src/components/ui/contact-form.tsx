@@ -135,7 +135,7 @@ export function ContactForm() {
             <div className="text-center">
               <button
                 type="submit"
-                className="px-8 py-3 bg-teal-500 text-white rounded-full font-medium hover:bg-teal-600 transition-colors duration-300"
+                className="px-8 py-3 bg-black text-white rounded-full font-medium hover:bg-black/90 transition-colors duration-300"
               >
                 Send Message
               </button>

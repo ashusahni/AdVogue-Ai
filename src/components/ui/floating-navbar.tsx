@@ -18,12 +18,19 @@ export const FloatingNavbar = ({
   const handleClick = (e: React.MouseEvent, link: string) => {
     e.preventDefault();
     const targetId = link.split('#')[1];
-    if (targetId) {
+    
+    // If we're not on the home page and trying to scroll to a section
+    if (targetId && window.location.pathname !== '/') {
+      // Navigate to home page with the section anchor
+      window.location.href = link.startsWith('/') ? link : `/${link}`;
+    } else if (targetId) {
+      // If we're already on home page, just scroll
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
+      // For non-section links, just navigate
       window.location.href = link;
     }
   };
