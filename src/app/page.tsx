@@ -99,7 +99,7 @@ export default function Home() {
       <BiDirectionalScroll />
       <ComparisonSection />
       <ServicesSection />
-      <FAQSection items={faqItems} />
+      {/* <FAQSection items={faqItems} /> */}
       <ContactForm />
     </>
   );
