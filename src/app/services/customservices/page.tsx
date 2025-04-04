@@ -187,7 +187,7 @@ export default function CustomServicesPage() {
               className="px-8 py-4 text-lg font-medium rounded-full bg-black hover:bg-black/90 text-white inline-flex items-center gap-3 shadow-lg shadow-black/20"
             >
               <CogIcon className="w-5 h-5" />
-              Get Custom Solution
+              Book a call
             </button>
           </motion.div>
         </div>
@@ -195,7 +195,7 @@ export default function CustomServicesPage() {
       </section>
 
 
-      
+
       <BiDirectionalScroll />
       <IndustryUseCases 
         useCases={customUseCases}

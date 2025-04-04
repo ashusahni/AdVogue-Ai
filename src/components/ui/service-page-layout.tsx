@@ -17,7 +17,6 @@ export interface ServiceFeature {
 export interface ServicePageProps {
   title?: string;
   description?: string;
-  features: ServiceFeature[];
   benefits: ServiceFeature[];
   className?: string;
 }
@@ -51,7 +50,6 @@ const gradientText = "bg-clip-text text-transparent bg-gradient-to-r";
 export function ServicePageLayout({
   title,
   description,
-  features,
   benefits,
   className,
 }: ServicePageProps) {
@@ -164,60 +162,6 @@ export function ServicePageLayout({
         </section>
       )}
 
-      {/* Features Grid */}
-      <section id="services" className="py-32">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="container px-4 mx-auto"
-        >
-          <motion.h2
-            variants={textVariants}
-            custom={0}
-            className={cn(
-              "text-4xl font-bold text-center mb-16",
-              gradientText,
-              "from-teal-500 to-emerald-500"
-            )}
-          >
-            Key Features
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                variants={textVariants}
-                custom={index + 1}
-              >
-                <CardContainer containerClassName="py-10">
-                  <CardBody className="relative h-auto w-full border border-slate-200 rounded-xl p-8 bg-white shadow-lg shadow-slate-200/50 hover:border-teal-500/50 transition-colors">
-                    {feature.icon && (
-                      <CardItem translateZ="50" className="w-full">
-                        <feature.icon className="w-8 h-8 text-teal-500 mb-4" />
-                      </CardItem>
-                    )}
-                    <CardItem translateZ="60" className="w-full">
-                      <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                        {feature.title}
-                      </h3>
-                    </CardItem>
-                    <CardItem
-                      as="p"
-                      translateZ="80"
-                      className="text-slate-600"
-                    >
-                      {feature.description}
-                    </CardItem>
-                  </CardBody>
-                </CardContainer>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
       {/* Benefits Section */}
       <section className="py-32 bg-white">
         <motion.div
@@ -260,7 +204,7 @@ export function ServicePageLayout({
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#faf9f7]">
+      <section className="py-32">
         <motion.div
           initial="hidden"
           whileInView="visible"
