@@ -4,7 +4,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { BackgroundGradient } from "./background-gradient";
 import { HoverEffect } from "./card-hover-effect";
-import { PhoneIcon, ChartBarIcon } from "@heroicons/react/24/outline";
+import { PhoneIcon, ChartBarIcon, ClockIcon, CpuChipIcon, ArrowPathIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
 import { CardContainer, CardBody, CardItem } from "./3d-card";
@@ -42,24 +42,35 @@ const features = [
   {
     title: "Advanced AI Technology",
     description: "Powered by state-of-the-art language models for natural conversations",
+    icon: CpuChipIcon,
+    gradient: "from-blue-500 to-cyan-500"
   },
   {
     title: "24/7 Availability",
     description: "Round-the-clock service without any downtime or delays",
+    icon: ClockIcon,
+    gradient: "from-purple-500 to-pink-500"
   },
   {
     title: "Seamless Integration",
     description: "Easy integration with your existing systems and workflows",
+    icon: ArrowPathIcon,
+    gradient: "from-green-500 to-emerald-500"
   },
   {
     title: "Custom Voice Training",
     description: "Personalized voice agents that match your brand identity",
-  },
+    icon: UserGroupIcon,
+    gradient: "from-orange-500 to-yellow-500"
+  }
 ];
 
 export function ServicesSection() {
   const scrollToBooking = () => {
-    document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
+    const bookingElement = document.getElementById("booking");
+    if (bookingElement) {
+      bookingElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
@@ -134,7 +145,7 @@ export function ServicesSection() {
           ))}
         </div>
 
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto mt-32">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -147,7 +158,7 @@ export function ServicesSection() {
                 }
               }
             }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             {features.map((feature, index) => (
               <motion.div
@@ -156,20 +167,40 @@ export function ServicesSection() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
                 }}
-                className="group relative rounded-xl border border-slate-200 bg-white p-6 shadow-lg hover:shadow-xl transition-shadow"
+                className="group relative"
               >
-                <div className="relative z-10">
-                  <h3 className="text-lg md:text-xl font-semibold text-slate-900 mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm md:text-base text-slate-600">
-                    {feature.description}
-                  </p>
+                <div className="relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-shadow hover:shadow-xl">
+                  {/* Gradient Background */}
+                  <div className={cn(
+                    "absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br",
+                    feature.gradient
+                  )} />
+                  
+                  {/* Icon with gradient background */}
+                  <div className={cn(
+                    "relative mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br",
+                    feature.gradient
+                  )}>
+                    <feature.icon className="h-6 w-6 text-white" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="relative">
+                    <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                      {feature.title}
+                    </h3>
+                    <p className="text-slate-600">
+                      {feature.description}
+                    </p>
+                  </div>
+
+                  {/* Hover Effect Border */}
+                  <div className="absolute inset-0 border border-slate-200 rounded-2xl transition-colors group-hover:border-slate-300" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-black/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
               </motion.div>
             ))}
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -178,7 +209,7 @@ export function ServicesSection() {
             className="text-center mt-12"
           >
             <Button
-              onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+              onClick={scrollToBooking}
               className="bg-black hover:bg-black/90 text-white px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base rounded-full shadow-lg shadow-black/20"
             >
               Get Started Today

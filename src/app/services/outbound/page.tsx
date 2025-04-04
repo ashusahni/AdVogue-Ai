@@ -186,6 +186,7 @@ export default function OutboundPage() {
               onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
               className="px-8 py-4 text-lg font-medium rounded-full bg-black hover:bg-black/90 text-white inline-flex items-center gap-3 shadow-lg shadow-black/20"
             >
+              <br />
               <PhoneIcon className="w-5 h-5" />
               Book a call
             </button>
