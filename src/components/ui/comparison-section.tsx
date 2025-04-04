@@ -3,37 +3,45 @@
 import { motion } from "framer-motion";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { Disclosure } from "@headlessui/react";
+import { ChevronUpIcon } from "@heroicons/react/20/solid";
 
 const comparisonData = [
   {
     us: "Experienced AI Voice Developers",
-    others: "Junior Developers"
+    them: "Junior Developers",
+    description: "Our team consists of senior developers with 5+ years of experience in AI and voice technology, ensuring robust and scalable solutions for your business."
   },
   {
     us: "Innovative Development Practices",
-    others: "Outdated Technologies & Approaches"
+    them: "Outdated Technologies & Approaches",
+    description: "We employ cutting-edge development methodologies and stay current with the latest AI advancements to deliver modern, efficient solutions."
   },
   {
     us: "Complete Custom Development",
-    others: "Generic / Copy & Paste Solutions"
+    them: "Generic / Copy & Paste Solutions",
+    description: "Every solution is built from the ground up to match your specific requirements, ensuring perfect alignment with your business needs."
   },
   {
     us: "Client-Centric Approach",
-    others: "Agency-Centric Approach"
+    them: "Agency-Centric Approach",
+    description: "Your success is our priority. We adapt our processes and solutions to match your business goals and user needs."
   },
   {
     us: "Rigorous Testing and Validation",
-    others: "Limited Testing or Inadequate Quality Control"
+    them: "Limited Testing or Inadequate Quality Control",
+    description: "Comprehensive testing protocols ensure reliable, high-quality voice solutions that perform consistently in real-world scenarios."
   },
   {
     us: "Partners With Leading AI Voice Platforms",
-    others: "No Access To Platforms, No Support"
+    them: "No Access To Platforms, No Support",
+    description: "Direct partnerships with major AI platforms give us priority access to the latest features and dedicated support channels."
   }
 ];
 
 export function ComparisonSection() {
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-[#faf9f7]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
@@ -54,23 +62,32 @@ export function ComparisonSection() {
                   className="h-10 w-auto"
                 />
               </div>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {comparisonData.map((item, index) => (
-                  <motion.div
-                    key={`us-${index}`}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex items-center gap-3"
-                  >
-                    <div className="shrink-0">
-                      <CheckIcon className="w-5 h-5 text-teal-500" />
-                    </div>
-                    <span className="text-slate-900 font-medium">
-                      {item.us}
-                    </span>
-                  </motion.div>
+                  <Disclosure key={`us-${index}`}>
+                    {({ open }) => (
+                      <div className="rounded-lg overflow-hidden">
+                        <Disclosure.Button className="flex w-full items-center justify-between text-left">
+                          <div className="flex items-center gap-3">
+                            <div className="shrink-0">
+                              <CheckIcon className="w-5 h-5 text-teal-500" />
+                            </div>
+                            <span className="text-slate-900 font-medium">
+                              {item.us}
+                            </span>
+                          </div>
+                          <ChevronUpIcon
+                            className={`${
+                              open ? 'rotate-180 transform' : ''
+                            } h-4 w-4 text-slate-500`}
+                          />
+                        </Disclosure.Button>
+                        <Disclosure.Panel className="px-9 py-3 bg-slate-50 text-sm text-slate-600">
+                          {item.description}
+                        </Disclosure.Panel>
+                      </div>
+                    )}
+                  </Disclosure>
                 ))}
               </div>
             </div>
@@ -78,27 +95,36 @@ export function ComparisonSection() {
             {/* Others Side */}
             <div>
               <div className="mb-8">
-                <h3 className="text-xl font-semibold text-slate-900">
+                <h3 className="text-xl font-semibold text-slate-400">
                   Other Development Agencies
                 </h3>
               </div>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {comparisonData.map((item, index) => (
-                  <motion.div
-                    key={`others-${index}`}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex items-center gap-3"
-                  >
-                    <div className="shrink-0">
-                      <XMarkIcon className="w-5 h-5 text-slate-400" />
-                    </div>
-                    <span className="text-slate-500">
-                      {item.others}
-                    </span>
-                  </motion.div>
+                  <Disclosure key={`them-${index}`}>
+                    {({ open }) => (
+                      <div className="rounded-lg overflow-hidden">
+                        <Disclosure.Button className="flex w-full items-center justify-between text-left">
+                          <div className="flex items-center gap-3">
+                            <div className="shrink-0">
+                              <XMarkIcon className="w-5 h-5 text-red-500" />
+                            </div>
+                            <span className="text-slate-500 font-medium">
+                              {item.them}
+                            </span>
+                          </div>
+                          <ChevronUpIcon
+                            className={`${
+                              open ? 'rotate-180 transform' : ''
+                            } h-4 w-4 text-slate-500`}
+                          />
+                        </Disclosure.Button>
+                        <Disclosure.Panel className="px-9 py-3 bg-slate-50 text-sm text-slate-600">
+                          Why this is a limitation: This approach often leads to suboptimal solutions, longer development times, and higher costs in the long run.
+                        </Disclosure.Panel>
+                      </div>
+                    )}
+                  </Disclosure>
                 ))}
               </div>
             </div>

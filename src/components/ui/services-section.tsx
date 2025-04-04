@@ -63,7 +63,7 @@ export function ServicesSection() {
   };
 
   return (
-    <section id="services" className="relative w-full py-20 overflow-hidden bg-slate-50">
+    <section id="services" className="relative w-full py-20 overflow-hidden bg-[#faf9f7]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(0,0,0,0.1),rgba(255,255,255,0))]" />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
