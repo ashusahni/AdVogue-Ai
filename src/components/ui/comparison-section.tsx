@@ -8,34 +8,39 @@ import { ChevronUpIcon } from "@heroicons/react/20/solid";
 
 const comparisonData = [
   {
-    us: "Experienced AI Voice Developers",
-    them: "Junior Developers",
-    description: "Our team consists of senior developers with 5+ years of experience in AI and voice technology, ensuring robust and scalable solutions for your business."
+    us: "Hyper-Specific AI Systems",
+    them: "Generic, One-Size-Fits-All Solutions",
+    description: "We perform a comprehensive audit and develop AI strategies specifically addressing your business's operational loopholes."
   },
   {
-    us: "Innovative Development Practices",
-    them: "Outdated Technologies & Approaches",
-    description: "We employ cutting-edge development methodologies and stay current with the latest AI advancements to deliver modern, efficient solutions."
+    us: "Risk-Free Satisfaction Guarantee",
+    them: "Risky Contracts, No Guarantees",
+    description: "Full refund if we don't meet agreed-upon KPIs—no questions asked."
   },
   {
-    us: "Complete Custom Development",
-    them: "Generic / Copy & Paste Solutions",
-    description: "Every solution is built from the ground up to match your specific requirements, ensuring perfect alignment with your business needs."
+    us: "Cutting-Edge Industry Technology",
+    them: "Outdated Technology Stacks",
+    description: "Our solutions leverage the latest advancements, ensuring your business stays ahead of the curve."
   },
   {
-    us: "Client-Centric Approach",
-    them: "Agency-Centric Approach",
-    description: "Your success is our priority. We adapt our processes and solutions to match your business goals and user needs."
+    us: "Comprehensive Multilingual Support",
+    them: "Limited Language Capabilities",
+    description: "AI agents fluent in English, Spanish, Chinese, and more, with custom language requests fully accommodated."
   },
   {
-    us: "Rigorous Testing and Validation",
-    them: "Limited Testing or Inadequate Quality Control",
-    description: "Comprehensive testing protocols ensure reliable, high-quality voice solutions that perform consistently in real-world scenarios."
+    us: "Eliminate Operational Bottlenecks",
+    them: "Persistent Operational Inefficiencies",
+    description: "Streamline efficiency by automating repetitive tasks and removing time-draining busywork."
   },
   {
-    us: "Partners With Leading AI Voice Platforms",
-    them: "No Access To Platforms, No Support",
-    description: "Direct partnerships with major AI platforms give us priority access to the latest features and dedicated support channels."
+    us: "Significant Cost & Time Savings",
+    them: "Hidden Costs & Wasted Resources",
+    description: "Reduce unnecessary expenditures and inefficiencies through intelligently designed automation solutions."
+  },
+  {
+    us: "Seamless System Integration",
+    them: "Poor Integration Support",
+    description: "We integrate directly into your existing CRMs, calendars, support systems, and internal tools—no need to change your tech stack."
   }
 ];
 
@@ -45,7 +50,7 @@ export function ComparisonSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-            Benefits that Drive Success
+            Why Choose AdVogue AI?
           </h2>
         </div>
 
@@ -55,13 +60,14 @@ export function ComparisonSection() {
             <div>
               <div className="mb-8">
                 <Image
-                  src="/logo.png"
-                  alt="Slick AI"
+                  src="/images/advogue-logo.svg"
+                  alt="AdVogue AI"
                   width={180}
                   height={40}
                   className="h-10 w-auto"
                 />
               </div>
+              
               <div className="space-y-4">
                 {comparisonData.map((item, index) => (
                   <Disclosure key={`us-${index}`}>
@@ -82,7 +88,8 @@ export function ComparisonSection() {
                             } h-4 w-4 text-slate-500 transition-transform duration-200`}
                           />
                         </Disclosure.Button>
-                        <AnimatePresence initial={false}>
+                        
+                        <AnimatePresence>
                           {open && (
                             <Disclosure.Panel
                               static
@@ -146,7 +153,8 @@ export function ComparisonSection() {
                             } h-4 w-4 text-slate-500 transition-transform duration-200`}
                           />
                         </Disclosure.Button>
-                        <AnimatePresence initial={false}>
+                        
+                        <AnimatePresence>
                           {open && (
                             <Disclosure.Panel
                               static
@@ -171,7 +179,7 @@ export function ComparisonSection() {
                               className="overflow-hidden"
                             >
                               <div className="p-4 bg-slate-50 text-sm text-slate-600">
-                                Why this is a limitation: This approach often leads to suboptimal solutions, longer development times, and higher costs in the long run.
+                                Lack deep understanding of your unique operational challenges and provide generic solutions that don't address your specific needs.
                               </div>
                             </Disclosure.Panel>
                           )}
