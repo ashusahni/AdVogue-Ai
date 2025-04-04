@@ -59,13 +59,9 @@ export function ComparisonSection() {
             {/* Our Side */}
             <div>
               <div className="mb-8">
-                <Image
-                  src="/images/advogue-logo.svg"
-                  alt="AdVogue AI"
-                  width={180}
-                  height={40}
-                  className="h-10 w-auto"
-                />
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
+                  AdVogue.ai
+                </h3>
               </div>
               
               <div className="space-y-4">
@@ -129,7 +125,7 @@ export function ComparisonSection() {
             {/* Others Side */}
             <div>
               <div className="mb-8">
-                <h3 className="text-xl font-semibold text-slate-400">
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
                   Other Development Agencies
                 </h3>
               </div>
