@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
 import { BiDirectionalScroll } from "@/components/ui/bi-directional-scroll";
 import { IndustryUseCases } from "@/components/ui/industry-use-cases";
+import { BenefitsSection } from "@/components/sections/benefits-section";
 
 import {
   PhoneIcon,
@@ -50,25 +51,29 @@ const features = [
 
 const benefits = [
   {
-    title: "Reduced Operational Costs",
-    description: "Cut down on staffing costs while maintaining high-quality customer service 24/7.",
-    icon: ChartBarIcon,
+    title: "24/7 Intelligent Response",
+    description: "Never miss a call with AI agents that handle inquiries around the clock, providing instant, accurate responses.",
+    icon: PhoneIcon,
+    highlight: "100% call answer rate"
   },
   {
-    title: "Improved Customer Satisfaction",
-    description: "Zero wait times and consistent service quality lead to happier customers.",
+    title: "Smart Call Routing",
+    description: "AI intelligently routes calls to the right department or agent based on context and urgency.",
     icon: UserGroupIcon,
+    highlight: "Reduces transfer time by 80%"
   },
   {
-    title: "Scalable Operations",
-    description: "Handle any call volume without the need to hire and train new staff.",
+    title: "Multilingual Support",
+    description: "Handle calls in multiple languages with natural-sounding AI that understands context and nuance.",
+    icon: ChatBubbleBottomCenterTextIcon,
+    highlight: "Support for 10+ languages"
+  },
+  {
+    title: "Automated Resolution",
+    description: "Resolve common inquiries automatically while seamlessly escalating complex issues to human agents.",
     icon: CogIcon,
-  },
-  {
-    title: "Data-Driven Insights",
-    description: "Gain valuable insights from every customer interaction to improve your service.",
-    icon: ChartBarIcon,
-  },
+    highlight: "70% automated resolution rate"
+  }
 ];
 
 const inboundUseCases = [
@@ -195,13 +200,13 @@ export default function InboundPage() {
       </section>
       <BiDirectionalScroll />
 
+      <BenefitsSection benefits={benefits} variant="inbound" />
       <IndustryUseCases 
         useCases={inboundUseCases}
         className="bg-slate-50"
       />
       <ServicePageLayout
         // features={features}
-        benefits={benefits}
         className="bg-black hover:bg-black/90"
       />
     </>

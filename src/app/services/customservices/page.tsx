@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
 import { BiDirectionalScroll } from "@/components/ui/bi-directional-scroll";
 import { IndustryUseCases } from "@/components/ui/industry-use-cases";
+import { BenefitsSection } from "@/components/sections/benefits-section";
 
 import {
   PhoneIcon,
@@ -50,25 +51,29 @@ const features = [
 
 const benefits = [
   {
-    title: "Scalable & Cost-Effective",
-    description: "Increase outreach without scaling costs proportionally—AI adapts to your needs.",
+    title: "Enterprise-Grade AI Voice",
+    description: "Custom-trained AI models that understand your industry's terminology and context, delivering human-like conversations with 99% accuracy.",
     icon: CogIcon,
+    highlight: "Powered by advanced language models and neural networks"
   },
   {
-    title: "Higher Engagement & Conversions",
-    description: "AI-driven voice solutions refine conversations in real-time for better results.",
+    title: "Seamless Integration",
+    description: "Connect with any CRM, scheduling system, or business tool. Our AI adapts to your workflow, not the other way around.",
     icon: UserGroupIcon,
+    highlight: "Works with Salesforce, HubSpot, Zoho, and more"
   },
   {
-    title: "Regulatory Compliance Built-In",
-    description: "We ensure all AI interactions follow industry standards and regulations.",
+    title: "Industry-Specific Compliance",
+    description: "Built-in compliance with HIPAA, GDPR, CCPA, and other regulations. Stay compliant while scaling your operations.",
     icon: ChartBarIcon,
+    highlight: "100% compliance with industry regulations"
   },
   {
-    title: "Tailored AI Training",
-    description: "We train AI models specifically for your industry to ensure high accuracy.",
+    title: "Real-Time Analytics",
+    description: "Get actionable insights from every conversation. Track performance, identify trends, and optimize your AI's effectiveness.",
     icon: ChartBarIcon,
-  },
+    highlight: "Advanced analytics dashboard included"
+  }
 ];
 
 const customUseCases = [
@@ -186,7 +191,7 @@ export default function CustomServicesPage() {
               onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
               className="px-8 py-4 text-lg font-medium rounded-full bg-black hover:bg-black/90 text-white inline-flex items-center gap-3 shadow-lg shadow-black/20"
             >
-              <CogIcon className="w-5 h-5" />
+              <PhoneIcon className="w-5 h-5" />
               Book a call
             </button>
           </motion.div>
@@ -194,18 +199,13 @@ export default function CustomServicesPage() {
         <Spotlight className="hidden md:block opacity-50" />
       </section>
 
-
-
       <BiDirectionalScroll />
+      <BenefitsSection benefits={benefits} variant="custom" />
       <IndustryUseCases 
         useCases={customUseCases}
         className="bg-slate-50"
       />
-      <ServicePageLayout
-        // features={features}
-        benefits={benefits}
-        className="bg-black hover:bg-black/90"
-      />
+      <ServicePageLayout />
     </>
-  );
+  ); 
 }

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Spotlight } from "@/components/ui/spotlight";
 import { BiDirectionalScroll } from "@/components/ui/bi-directional-scroll";
 import { IndustryUseCases } from "@/components/ui/industry-use-cases";
+import { BenefitsSection } from "@/components/sections/benefits-section";
 
 import {
   PhoneIcon,
@@ -50,25 +51,29 @@ const features = [
 
 const benefits = [
   {
-    title: "Increased Efficiency",
-    description: "Make more calls in less time with AI-powered automation and parallel processing.",
-    icon: ChartBarIcon,
+    title: "AI-Powered Outreach",
+    description: "Our AI voice agents make thousands of calls simultaneously, intelligently adapting conversations based on responses.",
+    icon: PhoneIcon,
+    highlight: "Up to 10,000 concurrent calls"
   },
   {
-    title: "Higher Conversion Rates",
-    description: "Optimize conversations in real-time based on customer responses and behavior.",
+    title: "Smart Lead Qualification",
+    description: "AI automatically qualifies leads using your criteria, ensuring your team only speaks with the most promising prospects.",
     icon: UserGroupIcon,
+    highlight: "Increase qualified leads by 300%"
   },
   {
-    title: "Cost-Effective Scaling",
-    description: "Expand your outreach capabilities without proportional cost increases.",
-    icon: CogIcon,
+    title: "Dynamic Scheduling",
+    description: "Seamlessly book meetings with qualified leads directly into your calendar, with smart availability management.",
+    icon: CalendarIcon,
+    highlight: "Automated calendar integration"
   },
   {
-    title: "Compliance Assured",
-    description: "Maintain perfect compliance with regulations and best practices in every call.",
+    title: "Performance Analytics",
+    description: "Get detailed insights into call performance, conversion rates, and ROI with our advanced analytics dashboard.",
     icon: ChartBarIcon,
-  },
+    highlight: "Real-time performance tracking"
+  }
 ];
 
 const outboundUseCases = [
@@ -195,17 +200,14 @@ export default function OutboundPage() {
         <Spotlight className="hidden md:block opacity-50" />
       </section>
 
-
-
-
       <BiDirectionalScroll />
+      <BenefitsSection benefits={benefits} variant="outbound" />
       <IndustryUseCases 
         useCases={outboundUseCases}
         className="bg-slate-50"
       />
       <ServicePageLayout
         // features={features}
-        benefits={benefits}
         className="bg-black hover:bg-black/90"
       />
     </>

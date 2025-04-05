@@ -28,7 +28,7 @@ export function HeroSection() {
           <div className="flex items-center justify-center gap-2 text-base">
             <div className="w-2 h-2 rounded-full bg-[#4ade80]"></div>
             <span className="font-medium">
-              Helping businesses implement Voice AI
+              Outbound Call Solutions
             </span>
           </div>
         </motion.div>
@@ -37,18 +37,21 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-10 leading-[1.1]"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-24 leading-[1.1]"
         >
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex items-center gap-4">
-              <span>Handle</span>
-              <div className="relative">
-                <span className="relative z-10">Real Calls</span>
-                <div className="absolute inset-0 bg-[#BAFBE4] -skew-x-6 transform z-0"></div>
-              </div>
+              <span>Proactive</span>
             </div>
-            <div className="flex items-center">
-              <span>with AI Voice Agents.</span>
+            <div className="flex items-center relative">
+              <span className="relative z-10">Customer Engagement</span>
+              <div 
+                className="absolute inset-0 bg-gradient-to-r from-rose-100 to-pink-100 opacity-60 -skew-x-6 transform z-0"
+                style={{
+                  mixBlendMode: 'multiply',
+                  filter: 'contrast(1.2) brightness(1.1)'
+                }}
+              ></div>
             </div>
           </div>
         </motion.h1>

@@ -17,7 +17,7 @@ export interface ServiceFeature {
 export interface ServicePageProps {
   title?: string;
   description?: string;
-  benefits: ServiceFeature[];
+  benefits?: ServiceFeature[];
   className?: string;
 }
 
@@ -183,7 +183,7 @@ export function ServicePageLayout({
             Benefits
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {benefits.map((benefit, index) => (
+            {benefits?.map((benefit, index) => (
               <motion.div
                 key={benefit.title}
                 variants={textVariants}
