@@ -6,6 +6,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { BiDirectionalScroll } from "@/components/ui/bi-directional-scroll";
 import { IndustryUseCases } from "@/components/ui/industry-use-cases";
 import { BenefitsSection } from "@/components/sections/benefits-section";
+import { ContactForm } from "@/components/ui/contact-form";
 
 import {
   PhoneIcon,
@@ -201,14 +202,8 @@ export default function InboundPage() {
       <BiDirectionalScroll />
 
       <BenefitsSection benefits={benefits} variant="inbound" />
-      <IndustryUseCases 
-        useCases={inboundUseCases}
-        className="bg-slate-50"
-      />
-      <ServicePageLayout
-        // features={features}
-        className="bg-black hover:bg-black/90"
-      />
+      <IndustryUseCases useCases={inboundUseCases} variant="inbound" />
+      <ContactForm />
     </>
   );
 } 
