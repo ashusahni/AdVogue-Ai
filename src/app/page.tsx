@@ -9,6 +9,7 @@ import { ContactForm } from "@/components/ui/contact-form";
 import { ComparisonSection } from "@/components/ui/comparison-section";
 import { BiDirectionalScroll } from "@/components/ui/bi-directional-scroll";
 import { CalendlyWidget } from "@/components/ui/calendly-widget";
+import { TrustedBrands } from "@/components/sections/trusted-brands";
 
 const pricingPlans = [
   {
@@ -93,14 +94,14 @@ const ScrollingTicker = () => {
 
 export default function Home() {
   return (
-    <>
-      {/* <ScrollingTicker /> */}
+    <main className="flex min-h-screen flex-col">
       <HeroSection />
       <BiDirectionalScroll />
       <ComparisonSection />
       <ServicesSection />
+      <TrustedBrands />
       {/* <FAQSection items={faqItems} /> */}
       <ContactForm />
-    </>
+    </main>
   );
 }

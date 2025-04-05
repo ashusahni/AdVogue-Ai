@@ -31,10 +31,12 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900"
         >
-          Transform Your
+          Handle Real Calls
+
           <br />
           <span className="relative">
-            Business Growth
+          with AI Voice Agents.
+
             <div className="absolute inset-0 bg-black/10 -skew-x-6 transform -z-10 translate-y-4"></div>
           </span>
         </motion.h1>

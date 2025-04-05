@@ -201,8 +201,8 @@ export default function InboundPage() {
       </section>
       <BiDirectionalScroll />
 
-      <BenefitsSection benefits={benefits} variant="inbound" />
       <IndustryUseCases useCases={inboundUseCases} variant="inbound" />
+      <BenefitsSection benefits={benefits} variant="inbound" />
       <ContactForm />
     </>
   );
