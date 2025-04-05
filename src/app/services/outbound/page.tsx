@@ -7,6 +7,7 @@ import { BiDirectionalScroll } from "@/components/ui/bi-directional-scroll";
 import { IndustryUseCases } from "@/components/ui/industry-use-cases";
 import { BenefitsSection } from "@/components/sections/benefits-section";
 import { ContactForm } from "@/components/ui/contact-form";
+import { BookingSection } from "@/components/sections/booking-section";
 
 import {
   PhoneIcon,
@@ -153,7 +154,7 @@ export default function OutboundPage() {
           >
             <div className="flex items-center justify-center gap-2 text-base mb-6">
               <div className="w-2 h-2 rounded-full bg-black"></div>
-              <span className="descriptive-text">
+              <span className="text-base font-medium tracking-wide text-gray-600 uppercase">
                 Outbound Call Solutions
               </span>
             </div>
@@ -163,7 +164,7 @@ export default function OutboundPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-8 text-gray-900 leading-[1.1]"
           >
             Proactive
             <br />
@@ -177,7 +178,7 @@ export default function OutboundPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="descriptive-text max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-normal"
           >
             Drive results with AI-powered outbound calls that engage customers,
             schedule appointments, and boost conversions with natural conversations.
@@ -187,12 +188,12 @@ export default function OutboundPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-10"
           >
             <button
               onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-8 py-4 text-lg font-medium rounded-full bg-black hover:bg-black/90 text-white inline-flex items-center gap-3 shadow-lg shadow-black/20"
+              className="px-8 py-4 text-lg font-semibold rounded-full bg-black hover:bg-black/90 text-white inline-flex items-center gap-3 shadow-lg shadow-black/20 transition-all duration-200 hover:scale-[1.02]"
             >
-              <br />
               <PhoneIcon className="w-5 h-5" />
               Book a call
             </button>
@@ -204,6 +205,8 @@ export default function OutboundPage() {
       <BiDirectionalScroll />
       <IndustryUseCases useCases={outboundUseCases} variant="outbound" />
       <BenefitsSection benefits={benefits} variant="outbound" />
+
+      <BookingSection />
       <ContactForm />
     </>
   );

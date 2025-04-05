@@ -40,12 +40,12 @@ export const FloatingNavbar = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       className={cn(
-        "fixed bottom-10 inset-x-0 mx-auto w-fit z-[5000]",
+        "fixed bottom-10 inset-x-0 mx-auto w-fit z-[5000] hidden md:block",
         className
       )}
     >
       <motion.nav 
-        className="flex items-center bg-white/90 backdrop-blur-md rounded-full px-4 py-3"
+        className="flex items-center bg-white/90 backdrop-blur-md rounded-full px-4 py-3 shadow-lg shadow-black/5"
         initial={{ boxShadow: "0 2px 10px rgba(0,0,0,0.1)" }}
       >
         <div className="flex items-center relative gap-1">

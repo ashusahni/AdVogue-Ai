@@ -13,37 +13,37 @@ export function BottomNavbar() {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="fixed bottom-0 left-0 right-0 bg-zinc-900/80 backdrop-blur-md border-t border-zinc-800 z-50 pb-safe"
+      className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 z-50 pb-safe block md:hidden"
     >
       <div className="max-w-5xl mx-auto px-4">
-        <div className="flex justify-around items-center h-14 md:h-16">
+        <div className="flex justify-around items-center h-16">
           <button
             onClick={() => scrollToSection("hero")}
-            className="flex flex-col items-center justify-center text-zinc-400 hover:text-teal-500 transition-colors"
+            className="flex flex-col items-center justify-center text-gray-600 hover:text-black transition-colors"
           >
-            <HomeIcon className="w-5 h-5 md:w-6 md:h-6" />
-            <span className="text-[10px] md:text-xs mt-1">Home</span>
+            <HomeIcon className="w-6 h-6" />
+            <span className="text-xs mt-1">Home</span>
           </button>
 
           <button
             onClick={() => scrollToSection("services")}
-            className="flex flex-col items-center justify-center text-zinc-400 hover:text-teal-500 transition-colors"
+            className="flex flex-col items-center justify-center text-gray-600 hover:text-black transition-colors"
           >
-            <UserGroupIcon className="w-5 h-5 md:w-6 md:h-6" />
-            <span className="text-[10px] md:text-xs mt-1">Services</span>
+            <UserGroupIcon className="w-6 h-6" />
+            <span className="text-xs mt-1">Services</span>
           </button>
 
           <button
             onClick={() => scrollToSection("booking")}
-            className="flex flex-col items-center justify-center text-zinc-400 hover:text-teal-500 transition-colors"
+            className="flex flex-col items-center justify-center text-gray-600 hover:text-black transition-colors"
           >
-            <CalendarIcon className="w-5 h-5 md:w-6 md:h-6" />
-            <span className="text-[10px] md:text-xs mt-1">Book</span>
+            <CalendarIcon className="w-6 h-6" />
+            <span className="text-xs mt-1">Book</span>
           </button>
 
           <button
             onClick={() => scrollToSection("contact")}
-            className="flex flex-col items-center justify-center text-zinc-400 hover:text-teal-500 transition-colors"
+            className="flex flex-col items-center justify-center text-gray-600 hover:text-black transition-colors"
           >
             <PhoneIcon className="w-6 h-6" />
             <span className="text-xs mt-1">Contact</span>

@@ -15,8 +15,11 @@ export function TrustedBrands() {
     { name: "Make", logo: "/brands/make logo.webp" }
   ];
 
+  // Duplicate brands for infinite scroll effect
+  const scrollBrands = [...brands, ...brands];
+
   return (
-    <section className="py-16 bg-[#f8fafc]">
+    <section className="py-16 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -27,29 +30,84 @@ export function TrustedBrands() {
           Trusted by 500+ Leading Brands
         </motion.h2>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 items-center justify-items-center"
-        >
-          {brands.map((brand) => (
+        <div className="relative w-full">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+
+          {/* Scrolling container */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex space-x-12 overflow-hidden"
+          >
             <motion.div
-              key={brand.name}
-              whileHover={{ scale: 1.05 }}
-              className="relative w-48 h-20 grayscale hover:grayscale-0 transition-all duration-300"
+              animate={{ 
+                x: [0, -1920],
+              }}
+              transition={{ 
+                duration: 30,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="flex space-x-12 shrink-0"
             >
-              <Image
-                src={brand.logo}
-                alt={`${brand.name} logo`}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                priority
-              />
+              {scrollBrands.map((brand, index) => (
+                <motion.div
+                  key={`${brand.name}-${index}`}
+                  whileHover={{ 
+                    scale: 1.05,
+                    filter: "brightness(1.2) contrast(1.1)",
+                  }}
+                  className="relative w-32 h-16 bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center shrink-0"
+                >
+                  <Image
+                    src={brand.logo}
+                    alt={`${brand.name} logo`}
+                    fill
+                    className="object-contain p-2 filter contrast-125 brightness-110"
+                    sizes="128px"
+                    priority
+                  />
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+
+            {/* Duplicate for seamless loop */}
+            <motion.div
+              animate={{ 
+                x: [0, -1920],
+              }}
+              transition={{ 
+                duration: 30,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="flex space-x-12 shrink-0"
+            >
+              {scrollBrands.map((brand, index) => (
+                <motion.div
+                  key={`${brand.name}-duplicate-${index}`}
+                  whileHover={{ 
+                    scale: 1.05,
+                    filter: "brightness(1.2) contrast(1.1)",
+                  }}
+                  className="relative w-32 h-16 bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center shrink-0"
+                >
+                  <Image
+                    src={brand.logo}
+                    alt={`${brand.name} logo`}
+                    fill
+                    className="object-contain p-2 filter contrast-125 brightness-110"
+                    sizes="128px"
+                    priority
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

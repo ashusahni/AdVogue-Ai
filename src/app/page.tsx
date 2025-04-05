@@ -8,8 +8,9 @@ import { FAQSection } from "@/components/ui/faq-section";
 import { ContactForm } from "@/components/ui/contact-form";
 import { ComparisonSection } from "@/components/ui/comparison-section";
 import { BiDirectionalScroll } from "@/components/ui/bi-directional-scroll";
-import { CalendlyWidget } from "@/components/ui/calendly-widget";
 import { TrustedBrands } from "@/components/sections/trusted-brands";
+import { ScheduleDemo } from "@/components/sections/schedule-demo";
+import { BookingSection } from "@/components/sections/booking-section";
 
 const pricingPlans = [
   {
@@ -113,7 +114,10 @@ export default function Home() {
         <ComparisonSection />
         <ServicesSection />
         <TrustedBrands />
-        {/* <FAQSection items={faqItems} /> */}
+        <ScrollingTicker />
+        {/* <PricingSection plans={pricingPlans} />
+        <FAQSection items={faqItems} /> */}
+        <BookingSection />
         <ContactForm />
       </main>
     </div>

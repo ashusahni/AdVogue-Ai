@@ -1,73 +1,67 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import { FaLinkedin } from "react-icons/fa";
 
 export function Footer() {
   return (
-    <footer className="w-full bg-slate-50 border-t border-slate-200">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="flex items-center mb-4">
-              <div className="relative w-32 h-8">
-                <Image
-                  src="/images/advogue-logo.png"
-                  alt="Advogue AI"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
+    <footer className="w-full bg-white border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          {/* Logo and Description */}
+          <div className="col-span-1 flex flex-col items-center md:items-start space-y-4">
+            <Link href="/" className="group">
+              <span className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                advo<span className="text-black">gue</span>
+              </span>
             </Link>
-            <p className="text-slate-600 max-w-sm">
-              Transform your business communications with our advanced AI voice agents. Experience the future of customer service today.
+            <p className="text-gray-600 text-lg max-w-md text-center md:text-left">
+              Transform your business communications with our advanced AI voice agents.
             </p>
           </div>
 
-          <div>
-            <h3 className="font-medium mb-4 text-sm uppercase text-slate-700">
-              Company
-            </h3>
-            <ul className="space-y-2">
-              {["About", "Pricing", "Contact Us", "YouTube Channel"].map(
-                (item, index) => (
-                  <li key={`footer-company-${index}`}>
-                    <Link
-                      href="#"
-                      className="text-slate-600 hover:text-black transition-colors"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                )
-              )}
-            </ul>
+          {/* Navigation */}
+          <div className="col-span-1 flex flex-col items-center md:items-start space-y-4">
+            <h3 className="text-xl font-semibold text-gray-900">Quick Links</h3>
+            <nav className="flex flex-col space-y-3">
+              <Link 
+                href="/" 
+                className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-lg"
+              >
+                About
+              </Link>
+              <Link 
+                href="https://www.linkedin.com/in/ananay-sharma-2b1b3b1b2/" 
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="flex items-center space-x-2 text-gray-600 hover:text-[#0A66C2] transition-colors duration-200 group text-lg"
+              >
+                <FaLinkedin className="w-6 h-6 group-hover:text-[#0A66C2]" />
+                <span>LinkedIn</span>
+              </Link>
+            </nav>
           </div>
 
-          <div>
-            <h3 className="font-medium mb-4 text-sm uppercase text-slate-700">
-              Legal
-            </h3>
-            <ul className="space-y-2">
-              {["Privacy", "Terms"].map((item, index) => (
-                <li key={`footer-legal-${index}`}>
-                  <Link
-                    href="#"
-                    className="text-slate-600 hover:text-black transition-colors"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Contact */}
+          <div className="col-span-1 flex flex-col items-center md:items-start space-y-4">
+            <h3 className="text-xl font-semibold text-gray-900">Get in Touch</h3>
+            <div className="flex flex-col space-y-2 items-center md:items-start">
+              <p className="text-gray-600 text-lg">Ready to transform your business?</p>
+              <Link 
+                href="/#booking" 
+                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-black hover:bg-gray-900 transition-all duration-200 transform hover:scale-105"
+              >
+                Schedule a Demo
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="text-center pt-8 border-t border-slate-200 mt-8">
-          <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} Advogue AI. All rights reserved.
-          </p>
+        {/* Copyright */}
+        <div className="mt-16 pt-8 border-t border-gray-100">
+          <div className="text-center text-gray-600">
+            © {new Date().getFullYear()} Advogue. All rights reserved.
+          </div>
         </div>
       </div>
     </footer>

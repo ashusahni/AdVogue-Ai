@@ -16,6 +16,7 @@ import {
   UserGroupIcon,
   CogIcon,
 } from "@heroicons/react/24/outline";
+import { BookingSection } from "@/components/sections/booking-section";
 
 const features = [
   {
@@ -203,6 +204,7 @@ export default function CustomServicesPage() {
       <BiDirectionalScroll />
       <IndustryUseCases useCases={customUseCases} variant="custom" />
       <BenefitsSection benefits={benefits} variant="custom" />
+      <BookingSection />
       <ContactForm />
     </>
   );

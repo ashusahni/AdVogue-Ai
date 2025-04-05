@@ -88,119 +88,87 @@ export function ServicePageLayout({
         </motion.div>
       </div>
 
-      {/* Hero Section - Only render if title and description are provided */}
-      {title && description && (
-        <section className="min-h-screen relative flex items-center justify-center py-32 px-4">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(56,189,248,0.1),rgba(255,255,255,0))]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/70 to-background" />
-          
+      {/* Hero Section */}
+      <section className="min-h-[60vh] flex items-center justify-center pt-32 pb-20 px-4 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto text-center relative z-10">
           <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-            className="container relative px-4 mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
           >
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.p
-                variants={textVariants}
-                custom={0}
-                className={cn(gradientText, "from-teal-500 to-emerald-500 font-medium mb-4")}
-              >
-                Helping businesses implement Voice AI
-              </motion.p>
-              
-              <div className="flex flex-wrap justify-center gap-x-4 mb-6">
-                {words.map((word, i) => (
-                  <motion.span
-                    key={i}
-                    variants={textVariants}
-                    custom={i + 1}
-                    className={cn(
-                      "text-6xl md:text-8xl font-bold",
-                      i === 0 ? cn(gradientText, "from-teal-500 to-emerald-500") :
-                      i === 1 ? cn(gradientText, "from-blue-500 to-blue-600") :
-                      "text-slate-900"
-                    )}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-              </div>
-
-              <motion.p
-                variants={textVariants}
-                custom={words.length + 1}
-                className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto"
-              >
-                {description}
-              </motion.p>
-
-              <motion.div
-                variants={textVariants}
-                custom={words.length + 2}
-                className="flex gap-4 justify-center"
-              >
-                <Button
-                  onClick={scrollToBooking}
-                  className={cn(
-                    "px-8 py-4 rounded-full text-white text-lg font-medium",
-                    "bg-black hover:bg-black/90 transition-opacity",
-                    "shadow-lg shadow-black/20"
-                  )}
-                >
-                  Book A Call
-                </Button>
-                <Button
-                  onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-                  className="px-8 py-4 rounded-full text-slate-700 text-lg font-medium bg-slate-100 hover:bg-slate-200 transition-colors"
-                >
-                  Our Services
-                </Button>
-              </motion.div>
+            <div className="flex items-center justify-center gap-2 text-base mb-6">
+              <div className="w-2 h-2 rounded-full bg-black"></div>
+              <span className="descriptive-text">
+                AI Voice Solutions
+              </span>
             </div>
           </motion.div>
-        </section>
-      )}
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-8 text-slate-900"
+          >
+            {title}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="descriptive-text max-w-3xl mx-auto mb-12 hidden md:block" // Hide on mobile
+          >
+            {description}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex items-center justify-center gap-4"
+          >
+            <button
+              onClick={scrollToBooking}
+              className="px-8 py-4 text-lg font-medium rounded-full bg-black hover:bg-black/90 text-white inline-flex items-center gap-3 shadow-lg shadow-black/20"
+            >
+              Book a Demo
+            </button>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Benefits Section */}
-      <section className="py-32 bg-white">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="container px-4 mx-auto"
-        >
-          <motion.h2
-            variants={textVariants}
-            custom={0}
-            className={cn(
-              "text-4xl font-bold text-center mb-16",
-              gradientText,
-              "from-teal-500 to-emerald-500"
-            )}
+      <section className="py-20 px-4 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           >
-            Benefits
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {benefits?.map((benefit, index) => (
               <motion.div
                 key={benefit.title}
                 variants={textVariants}
-                custom={index + 1}
-                className="flex gap-6 p-8 rounded-xl border border-slate-200 bg-white shadow-lg shadow-slate-200/50 hover:border-teal-500/50 transition-colors"
+                custom={index}
+                className="relative p-6 md:p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
               >
-                {benefit.icon && <benefit.icon className="w-6 h-6 text-teal-500" />}
-                <div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-slate-600">{benefit.description}</p>
-                </div>
+                {benefit.icon && (
+                  <benefit.icon className="w-8 h-8 text-gray-900 mb-4" />
+                )}
+                <h3 className="text-xl font-semibold mb-3 text-gray-900">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-600 text-sm md:text-base">
+                  {benefit.description}
+                </p>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* CTA Section */}

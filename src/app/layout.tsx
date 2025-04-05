@@ -1,8 +1,8 @@
 "use client";
 
 import { FloatingNavbar } from "@/components/ui/floating-navbar";
+import { BottomNavbar } from "@/components/ui/bottom-navbar";
 import { Footer } from "@/components/ui/footer";
-import { CalendlyWidget } from "@/components/ui/calendly-widget";
 import "./globals.css";
 
 const navigationItems = [
@@ -19,10 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-background">
-        <main className="flex min-h-screen flex-col items-center justify-between pt-8">
+        <main className="flex min-h-screen flex-col items-center justify-between pt-8 pb-16 md:pb-8">
           {children}
           <FloatingNavbar items={navigationItems} />
-          <CalendlyWidget />
+          <BottomNavbar />
           <Footer />
         </main>
       </body>
