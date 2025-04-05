@@ -76,32 +76,46 @@ const tickerWords = ["Innovative", "Creative", "Dynamic", "Efficient"];
 
 const ScrollingTicker = () => {
   return (
-    <div className="relative overflow-hidden w-full">
-      <motion.div
-        className="flex space-x-10 text-3px sm:text-4xl font-semibold text-slate-600 whitespace-nowrap"
-        animate={{ x: ["100%", "-100%"] }}
-        transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-      >
-        {[...tickerWords, ...tickerWords].map((word, index) => (
-          <span key={index} className="px-6">
-            {word}
-          </span>
-        ))}
-      </motion.div>
+    <div className="relative w-full overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          className="flex whitespace-nowrap"
+          animate={{ 
+            x: [0, -1000] 
+          }}
+          transition={{ 
+            repeat: Infinity,
+            duration: 20,
+            ease: "linear",
+            repeatType: "loop"
+          }}
+        >
+          {Array(4).fill(tickerWords).flat().map((word, index) => (
+            <span 
+              key={index} 
+              className="inline-block px-8 text-2xl sm:text-3xl font-semibold text-slate-600/80"
+            >
+              {word}
+            </span>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 };
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <HeroSection />
-      <BiDirectionalScroll />
-      <ComparisonSection />
-      <ServicesSection />
-      <TrustedBrands />
-      {/* <FAQSection items={faqItems} /> */}
-      <ContactForm />
-    </main>
+    <div className="relative w-full overflow-x-hidden">
+      <main className="flex min-h-screen flex-col items-center w-full">
+        <HeroSection />
+        <BiDirectionalScroll />
+        <ComparisonSection />
+        <ServicesSection />
+        <TrustedBrands />
+        {/* <FAQSection items={faqItems} /> */}
+        <ContactForm />
+      </main>
+    </div>
   );
 }
