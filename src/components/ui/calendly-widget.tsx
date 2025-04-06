@@ -14,11 +14,19 @@ declare global {
 export function CalendlyWidget() {
   const pathname = usePathname();
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  const maxRetries = 3;
 
   useEffect(() => {
     const initializeCalendly = () => {
       if (typeof window !== 'undefined' && window.Calendly) {
         try {
+          // Clear any existing widgets first
+          const existingWidget = document.querySelector('.calendly-inline-widget');
+          if (existingWidget) {
+            existingWidget.innerHTML = '';
+          }
+
           window.Calendly.initInlineWidget({
             url: 'https://calendly.com/ananay-advogueai/30min',
             parentElement: document.getElementsByClassName('calendly-inline-widget')[0],
@@ -30,25 +38,43 @@ export function CalendlyWidget() {
           });
         } catch (error) {
           console.error('Error initializing Calendly:', error);
+          // Retry initialization if under max retries
+          if (retryCount < maxRetries) {
+            setTimeout(() => {
+              setRetryCount(prev => prev + 1);
+              initializeCalendly();
+            }, 1000); // Wait 1 second before retrying
+          }
         }
+      } else if (retryCount < maxRetries) {
+        // If Calendly is not available yet, retry
+        setTimeout(() => {
+          setRetryCount(prev => prev + 1);
+          initializeCalendly();
+        }, 1000);
       }
     };
 
-    // Only initialize if script is loaded
+    // Initialize when script is loaded
     if (isScriptLoaded) {
       initializeCalendly();
     }
 
+    // Cleanup function
     return () => {
       if (typeof window !== 'undefined' && window.Calendly) {
         try {
           window.Calendly.destroyBadgeWidget();
+          const existingWidget = document.querySelector('.calendly-inline-widget');
+          if (existingWidget) {
+            existingWidget.innerHTML = '';
+          }
         } catch (error) {
           console.error('Error cleaning up Calendly:', error);
         }
       }
     };
-  }, [pathname, isScriptLoaded]);
+  }, [pathname, isScriptLoaded, retryCount]);
 
   return (
     <div className="w-full">
@@ -57,6 +83,7 @@ export function CalendlyWidget() {
         strategy="afterInteractive"
         onLoad={() => {
           setIsScriptLoaded(true);
+          setRetryCount(0); // Reset retry count when script loads
         }}
       />
       <div 

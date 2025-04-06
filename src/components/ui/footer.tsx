@@ -30,13 +30,13 @@ export function Footer() {
                 About
               </Link>
               <Link 
-                href="https://www.linkedin.com/in/ananay-sharma-2b1b3b1b2/" 
+                href="https://www.linkedin.com/in/ananay-goyal-286322128/" 
                 target="_blank"
                 rel="noopener noreferrer" 
                 className="flex items-center space-x-2 text-gray-600 hover:text-[#0A66C2] transition-colors duration-200 group text-lg"
               >
-                <FaLinkedin className="w-6 h-6 group-hover:text-[#0A66C2]" />
-                <span>LinkedIn</span>
+                <FaLinkedin className="w-6 h-6 group-hover:text-[#0A66C2] transition-colors duration-200" />
+                <span>Connect on LinkedIn</span>
               </Link>
             </nav>
           </div>
