@@ -7,6 +7,7 @@ import { BiDirectionalScroll } from "@/components/ui/bi-directional-scroll";
 import { IndustryUseCases } from "@/components/ui/industry-use-cases";
 import { BenefitsSection } from "@/components/sections/benefits-section";
 import { ContactForm } from "@/components/ui/contact-form";
+import { AnimatedLogo } from "@/components/ui/animated-logo";
 
 import {
   PhoneIcon,
@@ -152,12 +153,7 @@ export default function CustomServicesPage() {
             transition={{ duration: 0.5 }}
             className="mb-8"
           >
-            <div className="flex items-center justify-center gap-2 text-base mb-6">
-              <div className="w-2 h-2 rounded-full bg-black"></div>
-              <span className="descriptive-text">
-                Custom AI Solutions
-              </span>
-            </div>
+            <AnimatedLogo width={300} height={75} />
           </motion.div>
 
           <motion.h1
@@ -166,10 +162,10 @@ export default function CustomServicesPage() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-8 text-slate-900"
           >
-            Tailored Voice AI
+            Custom 
             <br />
             <span className="relative">
-              For Your Business
+            Voice AI Agents
               <div className="absolute inset-0 bg-black/10 -skew-x-6 transform -z-10 translate-y-4"></div>
             </span>
           </motion.h1>

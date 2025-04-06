@@ -8,6 +8,7 @@ import { IndustryUseCases } from "@/components/ui/industry-use-cases";
 import { BenefitsSection } from "@/components/sections/benefits-section";
 import { ContactForm } from "@/components/ui/contact-form";
 import { BookingSection } from "@/components/sections/booking-section";
+import { AnimatedLogo } from "@/components/ui/animated-logo";
 
 import {
   PhoneIcon,
@@ -152,12 +153,7 @@ export default function OutboundPage() {
             transition={{ duration: 0.5 }}
             className="mb-8"
           >
-            <div className="flex items-center justify-center gap-2 text-base mb-6">
-              <div className="w-2 h-2 rounded-full bg-black"></div>
-              <span className="text-base font-medium tracking-wide text-gray-600 uppercase">
-                Outbound Call Solutions
-              </span>
-            </div>
+            <AnimatedLogo width={300} height={75} />
           </motion.div>
 
           <motion.h1
@@ -166,10 +162,10 @@ export default function OutboundPage() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-8 text-gray-900 leading-[1.1]"
           >
-            Proactive
+            Outbound
             <br />
             <span className="relative">
-              Customer Engagement
+              Voice Agents
               <div className="absolute inset-0 bg-black/10 -skew-x-6 transform -z-10 translate-y-4"></div>
             </span>
           </motion.h1>

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ContactForm } from "./contact-form";
+import { AnimatedLogo } from "./animated-logo";
 
 export interface ServiceFeature {
   title: string;
@@ -77,13 +78,9 @@ export function ServicePageLayout({
         >
           <button 
             onClick={handleHomeClick}
-            className="hover:opacity-80 transition-all duration-300 hover:scale-105 inline-block cursor-pointer"
+            className="hover:opacity-80 transition-all duration-300 inline-block cursor-pointer"
           >
-            <h1 className="text-2xl md:text-3xl font-black tracking-tighter inline-flex items-baseline justify-center w-full">
-              <span className="text-black">advogue</span>
-              <span className="text-black font-bold">.</span>
-              <span className="text-black ml-0.5 font-bold text-[0.85em] tracking-normal relative -top-0.5">AI</span>
-            </h1>
+            <AnimatedLogo width={300} height={60} showTagline={false} />
           </button>
         </motion.div>
       </div>

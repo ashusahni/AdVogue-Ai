@@ -2,6 +2,7 @@
 
 import { HomeIcon, PhoneIcon, CalendarIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
+import { Logo } from "@/components/Logo";
 
 export function BottomNavbar() {
   const scrollToSection = (id: string) => {
@@ -21,8 +22,8 @@ export function BottomNavbar() {
             onClick={() => scrollToSection("hero")}
             className="flex flex-col items-center justify-center text-gray-600 hover:text-black transition-colors"
           >
-            <HomeIcon className="w-6 h-6" />
-            <span className="text-xs mt-1">Home</span>
+            <HomeIcon className="w-6 h-6 mb-1" />
+            <span className="text-xs">Home</span>
           </button>
 
           <button

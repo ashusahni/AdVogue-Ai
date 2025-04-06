@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
+import { Logo } from "@/components/Logo";
 
 export function Footer() {
   return (
@@ -11,9 +12,7 @@ export function Footer() {
           {/* Logo and Description */}
           <div className="col-span-1 flex flex-col items-center md:items-start space-y-4">
             <Link href="/" className="group">
-              <span className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                advo<span className="text-black">gue</span>
-              </span>
+              <Logo width={200} height={40} className="text-black hover:opacity-80 transition-opacity" />
             </Link>
             <p className="text-gray-600 text-lg max-w-md text-center md:text-left">
               Transform your business communications with our advanced AI voice agents.
@@ -59,8 +58,8 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t border-gray-100">
-          <div className="text-center text-gray-600">
-            © {new Date().getFullYear()} Advogue. All rights reserved.
+          <div className="col-span-full text-center text-gray-500 text-sm mt-12">
+            © {new Date().getFullYear()} advogue.ai. All rights reserved.
           </div>
         </div>
       </div>

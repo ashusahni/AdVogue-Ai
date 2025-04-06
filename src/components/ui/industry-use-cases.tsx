@@ -10,7 +10,8 @@ import {
   HeartIcon,
   CalendarIcon,
   ChatBubbleBottomCenterTextIcon,
-  DocumentTextIcon
+  DocumentTextIcon,
+  BuildingOffice2Icon
 } from "@heroicons/react/24/outline";
 
 interface IndustryUseCase {
@@ -59,7 +60,7 @@ const industries = [
   {
     icon: ShieldCheckIcon,
     title: "Insurance Agencies",
-    description: "AdVogue AI's AI Agent Squad is transforming how insurance agencies operate. From inbound support to outbound sales, our bilingual (English/Spanish) AI voice agents handle everything—saving time, cutting costs, and maximizing your pipeline.",
+    description: "advogue.ai's AI Agent Squad is transforming how insurance agencies operate. From inbound support to outbound sales, our bilingual (English/Spanish) AI voice agents handle everything—saving time, cutting costs, and boosting efficiency.",
     features: [
       { title: "Bilingual Support", description: "English/Spanish AI voice agents for broader market reach" },
       { title: "24/7 Operations", description: "Round-the-clock service handling both inbound and outbound calls" },

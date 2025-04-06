@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, getDay, addDays } from "date-fns";
 import { ChevronLeftIcon, ChevronRightIcon, ClockIcon, VideoCameraIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
+import Logo from "@/components/ui/logo";
 
 type Step = "date" | "time" | "form";
 
@@ -257,10 +258,10 @@ export function BookingCalendar() {
         <div className="p-8 border-r border-zinc-800">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-12 h-12 rounded-full bg-zinc-900 flex items-center justify-center">
-              <img src="/logo.png" alt="Logo" className="w-8 h-8" />
+              <Logo width={35} height={35} className="text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-white">INFLATE AI</h3>
+              <h3 className="text-xl font-semibold text-white">advogue.ai</h3>
               <p className="text-sm text-zinc-400">AI Voice Agent Discovery Call</p>
             </div>
           </div>

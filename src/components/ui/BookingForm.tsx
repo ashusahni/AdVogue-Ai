@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft } from "lucide-react";
 import { format } from "date-fns";
+import { Logo } from "@/components/ui/Logo";
 
 interface BookingFormProps {
   selectedDate: Date;
@@ -53,9 +54,11 @@ export function BookingForm({ selectedDate, selectedTime, onBack, onSubmit }: Bo
       <div className="flex">
         <div className="w-64 p-6 border-r border-zinc-800">
           <div className="flex items-center gap-2 mb-6">
-            <img src="/logo.png" alt="Logo" className="w-12 h-12 rounded-full bg-zinc-800" />
+            <div className="w-12 h-12 rounded-full bg-zinc-900 flex items-center justify-center">
+              <Logo width={32} height={32} className="text-white" />
+            </div>
             <div>
-              <h3 className="font-semibold text-white">INFLATE AI</h3>
+              <h3 className="font-semibold text-white">advogue.ai</h3>
               <p className="text-sm text-zinc-400">AI Voice Agent Discovery Call</p>
             </div>
           </div>

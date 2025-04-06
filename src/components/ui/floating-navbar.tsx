@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/Logo";
 
 export const FloatingNavbar = ({
   items,

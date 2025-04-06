@@ -2,8 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'export',
-  distDir: 'out',
   eslint: {
     // we use biome for linting
     ignoreDuringBuilds: true,
