@@ -23,14 +23,14 @@ export const FloatingNavbar = ({
     const targetId = link.split('#')[1];
     setActiveItem(targetId || link);
     
-    if (targetId && window.location.pathname !== '/') {
-      window.location.href = link.startsWith('/') ? link : `/${link}`;
+    if (link === '/') {
+      // Handle home button click
+      window.location.href = '/';
     } else if (targetId) {
-      const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      // If clicking a section link, always go to home with that section
+      window.location.href = `/#${targetId}`;
     } else {
+      // Handle other links
       window.location.href = link;
     }
   };
@@ -96,3 +96,4 @@ export const FloatingNavbar = ({
     </motion.div>
   );
 };
+

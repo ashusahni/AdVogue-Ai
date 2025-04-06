@@ -12,6 +12,14 @@ export function HeroSection() {
   const [isHovered, setIsHovered] = useState(false);
   const controls = useAnimation();
 
+  const handleSectionClick = (sectionId: string) => {
+    if (window.location.pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+    } else {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="min-h-[60vh] flex items-center justify-center pt-24 pb-20 px-4 w-full overflow-hidden bg-[#faf9f7] relative">
       <div className="max-w-6xl mx-auto text-center relative z-10">
@@ -55,14 +63,14 @@ export function HeroSection() {
           className="flex items-center justify-center gap-4 flex-col sm:flex-row"
         >
           <button
-            onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => handleSectionClick("booking")}
             className="w-full sm:w-auto px-8 py-4 text-lg font-medium rounded-full bg-black hover:bg-black/90 text-white inline-flex items-center justify-center gap-3 shadow-lg shadow-black/20"
           >
             <PhoneIcon className="w-5 h-5" />
             Book a call
           </button>
           <button
-            onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => handleSectionClick("services")}
             className="w-full sm:w-auto px-8 py-4 text-lg font-medium rounded-full bg-white hover:bg-gray-50 text-gray-900 inline-flex items-center justify-center gap-3 shadow-lg shadow-black/5"
           >
             Our Services
