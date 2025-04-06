@@ -32,19 +32,22 @@ export function HeroSection() {
           <AnimatedLogo width={500} height={100} className="mx-auto" />
         </motion.div>
 
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 sm:mb-8 text-slate-900 px-2 sm:px-0"
+          className="mb-6 sm:mb-8 px-2 sm:px-0"
         >
-          Handle Real Calls
-          <br />
-          <span className="relative inline-block mt-2 sm:mt-0">
-            with AI Voice Agents.
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900">
+            Handle Real Calls
+          </h1>
+          <div className="relative mt-2 sm:mt-0 inline-block">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900">
+              with AI Voice Agents.
+            </h1>
             <div className="absolute inset-0 bg-red-500/40 -skew-x-6 transform -z-10 translate-y-4"></div>
-          </span>
-        </motion.h1>
+          </div>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
