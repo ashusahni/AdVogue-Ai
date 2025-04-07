@@ -69,43 +69,34 @@ export function ServicePageLayout({
 
   return (
     <div className="bg-[#faf9f7]">
-      {/* Logo Section */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 w-full max-w-full px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 sm:mb-8"
-        >
-          <Logo width={1100} height={220} className="mx-auto w-full max-w-full h-auto" />
-        </motion.div>
-      </div>
-
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-center justify-center pt-32 pb-20 px-4 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center relative z-10">
+      <section className="min-h-[60vh] flex items-center justify-center pt-16 sm:pt-24 pb-16 sm:pb-20 px-4 w-full overflow-hidden bg-[#faf9f7] relative">
+        <div className="max-w-6xl mx-auto text-center relative z-10 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-24"
           >
-            <div className="flex items-center justify-center gap-2 text-base mb-6">
-              <div className="w-2 h-2 rounded-full bg-black"></div>
-              <span className="descriptive-text">
-                AI Voice Solutions
-              </span>
-            </div>
+            <Logo width={150} height={30} variant="small" className="mx-auto" />
           </motion.div>
 
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-8 text-slate-900"
+            className="mb-6 sm:mb-8 px-2 sm:px-0"
           >
-            {title}
-          </motion.h1>
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900">
+              {title}
+            </h1>
+            <div className="relative mt-2 sm:mt-0 inline-block">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-slate-900">
+                with AI Voice Agents.
+              </h1>
+              <div className="absolute inset-0 bg-red-500/40 -skew-x-6 transform -z-10 translate-y-4"></div>
+            </div>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
