@@ -8,7 +8,6 @@ import { IndustryUseCases } from "@/components/ui/industry-use-cases";
 import { BenefitsSection } from "@/components/sections/benefits-section";
 import { ContactForm } from "@/components/ui/contact-form";
 import { BookingSection } from "@/components/sections/booking-section";
-import { AnimatedLogo } from "@/components/ui/animated-logo";
 import { Logo } from "@/components/Logo";
 import { MouseEffect } from "@/components/ui/mouse-effect";
 
@@ -147,17 +146,19 @@ const outboundUseCases = [
 export default function OutboundPage() {
   return (
     <>
-      <MouseEffect />
       <section className="min-h-[60vh] flex items-center justify-center pt-24 pb-20 px-4 w-full overflow-hidden bg-[#faf9f7] relative">
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-6 sm:mb-8"
-          >
-            <Logo width={1100} height={220} className="mx-auto" />
-          </motion.div>
+          {/* Logo Section */}
+          <div className="absolute top-8 left-1/2 -translate-x-1/2 w-full max-w-full px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-6 sm:mb-8"
+            >
+              <Logo width={1100} height={220} className="mx-auto w-full max-w-full h-auto" />
+            </motion.div>
+          </div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

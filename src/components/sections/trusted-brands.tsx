@@ -25,9 +25,9 @@ export function TrustedBrands() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl md:text-3xl font-semibold text-center text-gray-900 mb-12"
+          className="text-2xl md:text-3xl font-semibold text-center font-bold text-gray-900 mb-12"
         >
-          Trusted by 500+ Leading Brands
+          OUR PARTNERS
         </motion.h2>
 
         <div className="relative w-full">

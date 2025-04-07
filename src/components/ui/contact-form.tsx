@@ -12,9 +12,50 @@ export function ContactForm() {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState({
+    loading: false,
+    success: false,
+    error: false,
+    errorMessage: ""
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+    setStatus({ loading: true, success: false, error: false, errorMessage: "" });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setStatus({ loading: false, success: true, error: false, errorMessage: "" });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: ""
+      });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setStatus({ loading: false, success: false, error: false, errorMessage: "" });
+      }, 5000);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
+      setStatus({ loading: false, success: false, error: true, errorMessage });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -143,13 +184,48 @@ export function ContactForm() {
             <div className="text-center">
               <button
                 type="submit"
-                className="inline-flex items-center justify-center px-8 py-3 bg-black text-white rounded-full font-medium hover:bg-black/90 transition-colors duration-300 transform hover:scale-[1.02]"
+                disabled={status.loading}
+                className={`inline-flex items-center justify-center px-8 py-3 bg-black text-white rounded-full font-medium transition-all duration-300 transform ${
+                  status.loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-black/90 hover:scale-[1.02]'
+                }`}
               >
-                Send Message
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ml-2">
-                  <path d="M3.105 2.289a.75.75 0 00-.826.95l1.414 4.925A1.5 1.5 0 005.135 9.25h6.115a.75.75 0 010 1.5H5.135a1.5 1.5 0 00-1.442 1.086l-1.414 4.926a.75.75 0 00.826.95 28.896 28.896 0 0015.293-7.154.75.75 0 000-1.115A28.897 28.897 0 003.105 2.289z" />
-                </svg>
+                {status.loading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ml-2">
+                      <path d="M3.105 2.289a.75.75 0 00-.826.95l1.414 4.925A1.5 1.5 0 005.135 9.25h6.115a.75.75 0 010 1.5H5.135a1.5 1.5 0 00-1.442 1.086l-1.414 4.926a.75.75 0 00.826.95 28.896 28.896 0 0015.293-7.154.75.75 0 000-1.115A28.897 28.897 0 003.105 2.289z" />
+                    </svg>
+                  </>
+                )}
               </button>
+
+              {status.success && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 text-green-600 font-medium"
+                >
+                  Message sent successfully! We'll get back to you soon.
+                </motion.p>
+              )}
+
+              {status.error && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 text-red-600 font-medium"
+                >
+                  {status.errorMessage || "Failed to send message. Please try again later."}
+                </motion.p>
+              )}
             </div>
           </form>
         </motion.div>

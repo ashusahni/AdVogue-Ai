@@ -6,7 +6,6 @@ import React from "react";
 import Link from "next/link";
 import { PhoneIcon } from "@heroicons/react/24/outline";
 import { Logo } from "@/components/Logo";
-import { MouseEffect } from "./mouse-effect";
 
 export function HeroSection() {
   const handleSectionClick = (sectionId: string) => {
@@ -19,15 +18,14 @@ export function HeroSection() {
 
   return (
     <section className="min-h-[60vh] flex items-center justify-center pt-16 sm:pt-24 pb-16 sm:pb-20 px-4 w-full overflow-hidden bg-[#faf9f7] relative">
-      <MouseEffect />
-      <div className="max-w-6xl mx-auto text-center relative z-10">
+      <div className="max-w-6xl mx-auto text-center relative z-10 w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="mb-6 sm:mb-8"
         >
-          <Logo width={1100} height={220} className="mx-auto" />
+          <Logo width={1100} height={220} className="mx-auto w-full max-w-full h-auto" />
         </motion.div>
 
         <motion.div
