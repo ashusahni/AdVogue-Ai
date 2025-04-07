@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-background">
+      <body className="bg-[#faf9f7]">
         <main className="flex min-h-screen flex-col items-center justify-between pt-8 pb-16 md:pb-8">
           {children}
           <FloatingNavbar items={navigationItems} />

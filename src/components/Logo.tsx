@@ -7,7 +7,7 @@ interface LogoProps {
   height?: number;
 }
 
-export function Logo({ className = '', width = 600, height = 120 }: LogoProps) {
+export function Logo({ className = '', width = 1000, height = 200 }: LogoProps) {
   return (
     <div 
       className={`relative ${className}`} 
@@ -22,7 +22,7 @@ export function Logo({ className = '', width = 600, height = 120 }: LogoProps) {
       }}
     >
       <Image
-        src="/images/advogue-logo.png.png"
+        src="/images/advogue ai new logo transparent png.png"
         alt="advogue.ai logo"
         fill
         style={{ 

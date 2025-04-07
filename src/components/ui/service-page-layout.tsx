@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ContactForm } from "./contact-form";
 import { AnimatedLogo } from "./animated-logo";
+import { Logo } from "@/components/Logo";
+import { MouseEffect } from "./mouse-effect";
 
 export interface ServiceFeature {
   title: string;
@@ -69,19 +71,16 @@ export function ServicePageLayout({
 
   return (
     <div className="bg-[#faf9f7]">
+      <MouseEffect />
       {/* Logo Section */}
       <div className="absolute top-8 left-1/2 -translate-x-1/2">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          className="mb-6 sm:mb-8"
         >
-          <button 
-            onClick={handleHomeClick}
-            className="hover:opacity-80 transition-all duration-300 inline-block cursor-pointer"
-          >
-            <AnimatedLogo width={300} height={60} showTagline={false} />
-          </button>
+          <Logo width={1100} height={220} className="mx-auto" />
         </motion.div>
       </div>
 

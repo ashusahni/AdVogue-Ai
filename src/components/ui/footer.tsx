@@ -12,7 +12,7 @@ export function Footer() {
           {/* Logo and Description */}
           <div className="col-span-1 flex flex-col items-center md:items-start space-y-4">
             <Link href="/" className="group">
-              <Logo width={200} height={40} className="text-black hover:opacity-80 transition-opacity" />
+              <Logo width={500} height={100} className="hover:opacity-80 transition-opacity" />
             </Link>
             <p className="text-gray-600 text-lg max-w-md text-center md:text-left">
               Transform your business communications with our advanced AI voice agents.

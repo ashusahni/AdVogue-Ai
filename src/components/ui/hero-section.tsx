@@ -1,17 +1,14 @@
 "use client";
 
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "./button";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { PhoneIcon } from "@heroicons/react/24/outline";
-import { Spotlight } from "./spotlight";
-import { AnimatedLogo } from "./animated-logo";
+import { Logo } from "@/components/Logo";
+import { MouseEffect } from "./mouse-effect";
 
 export function HeroSection() {
-  const [isHovered, setIsHovered] = useState(false);
-  const controls = useAnimation();
-
   const handleSectionClick = (sectionId: string) => {
     if (window.location.pathname !== '/') {
       window.location.href = `/#${sectionId}`;
@@ -22,6 +19,7 @@ export function HeroSection() {
 
   return (
     <section className="min-h-[60vh] flex items-center justify-center pt-16 sm:pt-24 pb-16 sm:pb-20 px-4 w-full overflow-hidden bg-[#faf9f7] relative">
+      <MouseEffect />
       <div className="max-w-6xl mx-auto text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,7 +27,7 @@ export function HeroSection() {
           transition={{ duration: 0.5 }}
           className="mb-6 sm:mb-8"
         >
-          <AnimatedLogo width={500} height={100} className="mx-auto" />
+          <Logo width={1100} height={220} className="mx-auto" />
         </motion.div>
 
         <motion.div
@@ -80,7 +78,6 @@ export function HeroSection() {
           </button>
         </motion.div>
       </div>
-      <Spotlight className="hidden md:block opacity-50" />
     </section>
   );
 }
