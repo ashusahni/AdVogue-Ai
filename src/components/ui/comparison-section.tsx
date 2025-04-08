@@ -5,6 +5,7 @@ import { CheckIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
+import { Logo } from "@/components/Logo";
 
 const comparisonData = [
   {
@@ -61,10 +62,22 @@ export function ComparisonSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
             {/* Our Side */}
             <div>
-              <div className="mb-8">
-                <h3 className="text-2xl md:text-3xl font-bold text-black">
-                  advogue.ai
-                </h3>
+              <div className="mb-6 flex items-center h-[120px] md:h-[140px]">
+                <div className="relative w-[700px] h-full flex items-center">
+                  <Image
+                    src="/images/advogue ai new logo transparent png.png"
+                    alt="advogue.ai logo"
+                    fill
+                    style={{ 
+                      objectFit: 'contain',
+                      width: '100%',
+                      height: '100%',
+                      filter: 'contrast(1.1) brightness(1.1)'
+                    }}
+                    priority
+                    quality={100}
+                  />
+                </div>
               </div>
               
               <div className="space-y-4">
@@ -127,7 +140,7 @@ export function ComparisonSection() {
 
             {/* Others Side */}
             <div>
-              <div className="mb-8">
+              <div className="mb-6 flex items-center h-[120px] md:h-[140px]">
                 <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
                   Other Development Agencies
                 </h3>
