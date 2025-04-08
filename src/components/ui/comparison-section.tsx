@@ -55,7 +55,7 @@ export function ComparisonSection() {
           viewport={{ once: true }}
           className="text-3xl md:text-4xl font-bold text-center mb-12"
         >
-          Why Choose advogue.ai?
+          Why Choose AdVogue.ai ?
         </motion.h2>
 
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
