@@ -22,7 +22,7 @@ const pricingPlans = [
       "24/7 Call Handling",
       "Custom Voice Training",
       "Natural Language Processing",
-      "Real-time Analytics",
+      "Real-time Analnytics",
       "CRM Integration",
       "Priority Support",
     ],
