@@ -15,7 +15,9 @@ export default function ClientBody({
 
   return (
     <body className="antialiased" suppressHydrationWarning>
-      {children}
+      <div style={{ position: 'relative' }}>
+        {children}
+      </div>
     </body>
   );
 }
