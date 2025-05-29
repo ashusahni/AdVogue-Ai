@@ -38,7 +38,7 @@ const features = [
   },
   {
     title: "Performance Analytics",
-    description: "Track campaign success, conversion rates, and customer engagement metrics.",
+    description: "Track campaign success, conversion rate, and customer engagement metrics.",
     icon: ChartBarIcon,
   },
   {
