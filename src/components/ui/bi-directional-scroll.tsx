@@ -6,35 +6,35 @@ import { useRef } from "react";
 const words = [
   {
     text: "Innovative",
-    gradient: "from-blue-500 to-cyan-500"
+    gradient: "from-blue-600 to-cyan-600"
   },
   {
     text: "Creative",
-    gradient: "from-purple-500 to-pink-500"
+    gradient: "from-violet-600 to-purple-600"
   },
   {
     text: "Dynamic",
-    gradient: "from-orange-500 to-yellow-500"
+    gradient: "from-orange-600 to-amber-600"
   },
   {
     text: "Efficient",
-    gradient: "from-green-500 to-emerald-500"
+    gradient: "from-emerald-600 to-teal-600"
   },
   {
     text: "Powerful",
-    gradient: "from-red-500 to-orange-500"
+    gradient: "from-red-600 to-orange-600"
   },
   {
     text: "Intelligent",
-    gradient: "from-violet-500 to-purple-500"
+    gradient: "from-violet-600 to-purple-600"
   },
   {
     text: "Seamless",
-    gradient: "from-teal-500 to-cyan-500"
+    gradient: "from-teal-600 to-cyan-600"
   },
   {
     text: "Advanced",
-    gradient: "from-indigo-500 to-blue-500"
+    gradient: "from-indigo-600 to-blue-600"
   }
 ];
 
@@ -54,24 +54,27 @@ export function BiDirectionalScroll() {
   return (
     <section 
       ref={containerRef}
-      className="w-full py-20 overflow-hidden bg-[#faf9f7] relative"
+      className="w-full section-padding bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 relative overflow-hidden"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent opacity-20" />
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-80 h-80 bg-gradient-to-r from-blue-400/10 to-violet-400/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 rounded-full blur-3xl" />
+      </div>
       
       <motion.div 
-        className="w-[80%] mx-auto"
+        className="w-[80%] mx-auto relative z-10"
         style={{ opacity }}
       >
         {/* Top row - right to left */}
-        <div className="relative overflow-hidden mb-6">
+        <div className="relative overflow-hidden mb-8">
           <motion.div
             className="flex whitespace-nowrap"
             animate={{
               x: ["0%", "-33.33%"]
             }}
             transition={{
-              duration: 15,
+              duration: 20,
               ease: "linear",
               repeat: Infinity,
               repeatType: "loop"
@@ -80,13 +83,14 @@ export function BiDirectionalScroll() {
             {duplicatedWords.map((word, idx) => (
               <motion.div
                 key={idx}
-                className="inline-flex items-center justify-center mx-3 group"
-                whileHover={{ scale: 1.05 }}
+                className="inline-flex items-center justify-center mx-4 group"
+                whileHover={{ scale: 1.08, y: -5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className={`px-6 py-3 rounded-2xl bg-white shadow-lg backdrop-blur-sm bg-opacity-80 
-                  border border-slate-200 transition-all duration-300
-                  group-hover:shadow-xl group-hover:border-slate-300`}
+                <div className="px-8 py-4 rounded-2xl bg-white shadow-lg shadow-slate-200/50 
+                  border border-slate-100 transition-all duration-500
+                  group-hover:shadow-xl group-hover:shadow-slate-300/50 group-hover:border-slate-200
+                  backdrop-blur-sm bg-opacity-90"
                 >
                   <span className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${word.gradient}`}>
                     {word.text}
@@ -105,7 +109,7 @@ export function BiDirectionalScroll() {
               x: ["-33.33%", "0%"]
             }}
             transition={{
-              duration: 15,
+              duration: 20,
               ease: "linear",
               repeat: Infinity,
               repeatType: "loop"
@@ -114,13 +118,14 @@ export function BiDirectionalScroll() {
             {duplicatedWords.map((word, idx) => (
               <motion.div
                 key={idx}
-                className="inline-flex items-center justify-center mx-3 group"
-                whileHover={{ scale: 1.05 }}
+                className="inline-flex items-center justify-center mx-4 group"
+                whileHover={{ scale: 1.08, y: -5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className={`px-6 py-3 rounded-2xl bg-white shadow-lg backdrop-blur-sm bg-opacity-80 
-                  border border-slate-200 transition-all duration-300
-                  group-hover:shadow-xl group-hover:border-slate-300`}
+                <div className="px-8 py-4 rounded-2xl bg-white shadow-lg shadow-slate-200/50 
+                  border border-slate-100 transition-all duration-500
+                  group-hover:shadow-xl group-hover:shadow-slate-300/50 group-hover:border-slate-200
+                  backdrop-blur-sm bg-opacity-90"
                 >
                   <span className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${word.gradient}`}>
                     {word.text}

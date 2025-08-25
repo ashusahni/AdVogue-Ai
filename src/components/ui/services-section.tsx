@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { PhoneIcon, ChartBarIcon, ClockIcon, CpuChipIcon, ArrowPathIcon, UserGroupIcon } from "@heroicons/react/24/outline";
+import { PhoneIcon, ChartBarIcon, ClockIcon, CpuChipIcon, ArrowPathIcon, UserGroupIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -37,7 +37,7 @@ const EvervaultCard = ({
   return (
     <div
       className={cn(
-        "relative w-full h-full rounded-2xl bg-white shadow-lg overflow-hidden group",
+        "relative w-full h-full rounded-3xl bg-gradient-to-br from-white to-slate-50/50 shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden group",
         className
       )}
       onMouseMove={handleMouseMove}
@@ -45,7 +45,7 @@ const EvervaultCard = ({
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-violet-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
           maskImage: isHovered
             ? `radial-gradient(${mouseX}px ${mouseY}px at ${mouseX}px ${mouseY}px, white, transparent)`
@@ -75,25 +75,28 @@ const services = [
     title: "Inbound Calls",
     description: "Handle customer inquiries, support tickets, and general assistance with our advanced AI voice agents.",
     icon: PhoneIcon,
-    className: "bg-gradient-to-br from-gray-100 to-gray-200 border-gray-200",
+    className: "bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-200/50",
     href: "/services/inbound",
     image: "/images/inbound-calls.jpg",
+    gradient: "from-blue-500 to-cyan-500"
   },
   {
     title: "Outbound Calls",
     description: "Proactive customer engagement, appointment scheduling, and follow-ups with natural conversation flow.",
     icon: PhoneIcon,
-    className: "bg-gradient-to-br from-gray-100 to-gray-200 border-gray-200",
+    className: "bg-gradient-to-br from-violet-50 to-violet-100/50 border-violet-200/50",
     href: "/services/outbound",
     image: "/images/outbound-calls.jpg",
+    gradient: "from-violet-500 to-purple-500"
   },
   {
     title: "Custom & Tailored Solutions",
     description: "Get a personalized AI voice agent solution that fits your business needs and industry requirements.",
     icon: ChartBarIcon,
-    className: "bg-gradient-to-br from-gray-100 to-gray-200 border-gray-200",
+    className: "bg-gradient-to-br from-emerald-50 to-emerald-100/50 border-emerald-200/50",
     href: "services/customservices",
     image: "/images/custom-solutions.jpg",
+    gradient: "from-emerald-500 to-teal-500"
   },
 ];
 
@@ -108,127 +111,170 @@ const features = [
     title: "24/7 Availability",
     description: "Round-the-clock service without any downtime or delays",
     icon: ClockIcon,
-    gradient: "from-purple-500 to-pink-500"
+    gradient: "from-violet-500 to-purple-500"
   },
   {
     title: "Seamless Integration",
     description: "Easy integration with your existing systems and workflows",
     icon: ArrowPathIcon,
-    gradient: "from-green-500 to-emerald-500"
+    gradient: "from-emerald-500 to-teal-500"
   },
   {
     title: "Custom Voice Training",
     description: "Personalized voice agents that match your brand identity",
     icon: UserGroupIcon,
-    gradient: "from-orange-500 to-yellow-500"
+    gradient: "from-orange-500 to-amber-500"
   }
 ];
 
 export function ServicesSection() {
   return (
-    <section id="services" className="w-full py-20 bg-[#faf9f7]">
-      <div className="container px-4 mx-auto">
-        <div className="max-w-3xl mx-auto text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6">
+    <section id="services" className="w-full section-padding bg-gradient-to-br from-slate-50 via-white to-blue-50/20 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-violet-400/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-cyan-400/10 to-blue-400/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto container-padding relative z-10">
+        {/* Section Header */}
+        <div className="max-w-4xl mx-auto text-center mb-20">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gradient-primary mb-8"
+          >
             Transform Your Customer Service
-          </h2>
-          <p className="text-base md:text-lg text-slate-600">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto"
+          >
             Experience the future of customer interactions with our AI-powered voice agents.
             Seamless, efficient, and available 24/7.
-          </p>
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-24">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               <EvervaultCard>
-                <div className="relative h-48">
+                <div className="relative h-56 overflow-hidden rounded-t-3xl">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className={cn(
+                    "absolute top-4 left-4 w-12 h-12 rounded-2xl bg-gradient-to-br flex items-center justify-center shadow-lg",
+                    service.gradient
+                  )}>
+                    <service.icon className="w-6 h-6 text-white" />
+                  </div>
                 </div>
-                <div className="p-6">
-                  <motion.div
-                    initial={{ scale: 1 }}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    className="relative z-10"
-                  >
-                    <service.icon className="w-10 h-10 text-gray-800 mb-4" />
-                  </motion.div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 relative z-10">
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-gradient-primary transition-all duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 mb-6 relative z-10">
+                  <p className="text-slate-600 mb-6 leading-relaxed">
                     {service.description}
                   </p>
-                  <a
+                  <motion.a
                     href={service.href}
-                    className="block w-full py-3 px-4 text-center bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5 relative z-10"
+                    whileHover={{ x: 5 }}
+                    className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors group/link"
                   >
                     Learn More
-                  </a>
+                    <ArrowRightIcon className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                  </motion.a>
                 </div>
               </EvervaultCard>
             </motion.div>
           ))}
         </div>
 
-        <div className="max-w-5xl mx-auto mt-32">
-          <div className="flex justify-center mb-12">
-            <button
-              onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-full font-medium hover:bg-neutral-800 transition-colors"
-            >
-              {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-              </svg> */}
-              Get started today
-            </button> 
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Features Section */}
+        <div className="max-w-6xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h3 className="text-3xl md:text-4xl font-bold text-gradient-primary mb-4">
+              Why Choose Our AI Solutions?
+            </h3>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Built with cutting-edge technology and designed for enterprise-grade performance
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="card-modern p-8 group"
               >
                 <div className={cn(
-                  "inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br mb-6",
+                  "inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br mb-6 shadow-lg",
                   feature.gradient
                 )}>
                   <motion.div
                     initial={{ scale: 1 }}
-                    whileHover={{ scale: 1.2 }}
+                    whileHover={{ scale: 1.2, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
-                    <feature.icon className="h-6 w-6 text-white" />
+                    <feature.icon className="h-8 w-8 text-white" />
                   </motion.div>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">
+                <h4 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-gradient-primary transition-all duration-300">
                   {feature.title}
-                </h3>
-                <p className="text-slate-600">
+                </h4>
+                <p className="text-slate-600 leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>
             ))}
           </div>
           
+          {/* CTA Section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-center mt-16"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+              className="btn-primary group"
+            >
+              Get Started Today
+              <ArrowRightIcon className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+            </motion.button>
+          </motion.div>
         </div>
       </div>
     </section>
